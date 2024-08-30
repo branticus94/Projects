@@ -1,14 +1,13 @@
 # CFGDegree-Foundation-Module-Assignments
 
-- [About Me](#:woman:about-me!)
+- [About Me](#woman-about-me)
 - [Previous CFG Degree Projects](#previous-cfg-degree-projects)
-- [How I will be using Github for this assignment](# How I will be using Github for this assignment)
-- [Week One Notes](#week-one-notes)
+- [How I will be using Github for this assignment](#how-i-will-be-using-github-for-this-assignment)
+- [Week 1 Notes](#week-1-notes)
 - [Week 1 Lesson 1](#week-1-lesson-1)
 - [Week 1 Lesson 2](#week-1-lesson-2)
 - [Week 1 Lesson 3](#week-1-lesson-3)
 
-  https://github.com/branticus94/CFG-Assignments/edit/main/README.md#week-one-notes
 # :woman: **About Me!**
 
 > [!WARNING]
@@ -52,7 +51,7 @@ Favourite 5 cuisines in order of preference:
 
 # How I will be using Github for this assignment
 
-# Week one notes
+# Week 1 notes
 
 ## Week 1 Lesson 1
 
