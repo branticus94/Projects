@@ -1,9 +1,17 @@
 # CFGDegree-Foundation-Module-Assignments
 
-> [!WARNING]
-> Have tried to use as many markdown features as possible so that I can refer to this page at a later date, please note this may elicit a sense that your timeline has reverted to the 1990s when myspace was a thing and people tried to make their page look as fancy as possible by using every known feature.
+[About Me](#About Me!)
+[Previous CFG Degree Projects](# Previous CFG Degree Projects)
+[How I will be using Github for this assignment](# How I will be using Github for this assignment)
+[Week 1 notes](# Weeke 1 notes)
+[Week 1 Lesson 1](## Week 1 Lesson 1)
+[Week 1 Lesson 2](## Week 1 Lesson 2)
+[Week 1 Lesson 3](## Week 1 Lesson 3)
 
-## :woman: **About Me!**
+# :woman: **About Me!**
+
+> [!WARNING]
+> Have tried to use as many markdown features as possible so that I can refer to this page at a later date, please note this may elicit a sense that your timeline has reverted to the 1990s when myspace was a thing and people tried to make their page look as fancy as possible by using every known feature!
 
 ### Name
 Alexandra aka ~~Branticus94 (please don't laugh at my username I made it circa 2019 when I was first dabbling with code, unmarried (hence Brant), using a nickname I was adorned with during my school years when I was rather fond of greek/roman history and mythology, think: this is sparta)~~ 'Alex' Howland
@@ -38,4 +46,16 @@ Favourite 5 cuisines in order of preference:
 
 > [!NOTE]
 > This list is not exhausitive, will eat any and all food 😆.
+
+# Previous CFG Degree Projects
+
+# How I will be using Github for this assignment
+
+# Week 1 notes
+
+## Week 1 Lesson 1
+
+## Week 1 Lesson 2
+
+## Week 1 Lesson 3
 
