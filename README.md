@@ -3,6 +3,7 @@
 - [About Me](#woman-about-me)
 - [Previous CFG Degree Projects](#previous-cfg-degree-projects)
 - [How I will be using Github for this assignment](#how-i-will-be-using-github-for-this-assignment)
+- [Working with files in git and github](#working-with-files-in-git-and-github)
 - [Creating a .gitignore, explaining what it is for! (What poetry! 📚)](#creating-a-gitignore-explaining-what-it-is-for)
 - [Creating a requirements.txt (can be empty), explaining what it is for](#creating-a-requirementstxt-can-be-empty-explaining-what-it-is-for)
 
@@ -212,6 +213,201 @@ To github.com:branticus94/CFG-Assignments.git
    30589f5..293cb1f  main -> main
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % 
 ```
+
+# Working with files in git and github
+
+- [Checking the status](#checking-the-status)
+- [Creating a branch](#creating-a-branch)
+- [Adding files to a branch](#adding-files-to-a-branch)
+- [Adding commits with meaningful messages](#adding-commits-with-meaningful-messages)
+- [Opening a pull request]()
+- [Merging and deploying to main branch]()
+
+For this assignment I created a project which takes a users favourite ice cream flavour. I first created a directory to create my project in: 
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls
+Photos			README.md		Secrets			requirements.txt	secret.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % mkdir Favourite
+```
+
+I then changed to that directory and created a python file using vim which takes a user input and outputs a friendly message with the users input:
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % cd Favourite
+AlexHowland@Toms-MacBook-Pro-2 Favourite % touch favourite.py
+AlexHowland@Toms-MacBook-Pro-2 Favourite % vi favourite.py
+AlexHowland@Toms-MacBook-Pro-2 Favourite % cat favourite.py
+# Take user input for favourite ice cream flavour printing the output
+favourite = input("What is your favourite ice cream flavour?")
+
+print("No way! I love " + favourite + " too!")
+```
+
+## Checking the status
+Now I wanted to add a new feature to this project, if the user input is chocolate I want to rickroll the user, displaying a picture of chocolate flavoured _'rick rolls'_. I first wanted to ensure that my python program was updated on main, so I used the git status command, I forgot to push these changes to github so I added, committed and pushed to my project:
+
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	Favourite/
+
+nothing added to commit but untracked files present (use "git add" to track)
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add .
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git commit -m 'added favourite python project'
+[main 4852a33] added favourite python project
+ 1 file changed, 4 insertions(+)
+ create mode 100644 Favourite/favourite.py
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 457 bytes | 457.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:branticus94/CFG-Assignments.git
+   d2f5815..4852a33  main -> main
+```
+
+## Creating a branch
+I want to create my functionality on a separate branch so I used the "git branch" command to create a separate branch called 'if_chocolate':
+
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git branch if_chocolate
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git branch
+  if_chocolate
+* main
+```
+
+I then switched to work in that branch using "git checkout", I could have achieved the same by using "git checkout -b if chocolate" command which creates and switches to the branch in one fell swoop:
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git checkout if_chocolate
+Switched to branch 'if_chocolate'
+```
+
+As you can see all of my files/directories are within this branch still:
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls
+Favourite		Photos			README.md		Secrets			requirements.txt	secret.txt
+```
+
+I then changed directory to Favourite, the location of my favourite ice cream flavour python program:
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % cd Favourite
+AlexHowland@Toms-MacBook-Pro-2 Favourite % ls
+favourite.py
+```
+
+I amended the program to use the pillow module to open an image of rick rolls:
+```
+AlexHowland@Toms-MacBook-Pro-2 Favourite % vi favourite.py 
+AlexHowland@Toms-MacBook-Pro-2 Favourite % cat favourite.py
+# Imports PIL module
+from PIL import Image
+
+# Take user input for favourite ice cream flavour printing the output
+favourite = input("What is your favourite ice cream flavour?")
+
+print("No way! I love " + favourite + " too!")
+
+# If favourite flavour is chocolate display rick rolls:
+
+if favourite.lower() == 'chocolate':
+    image = Image.open('rick_rolls.jpeg')
+    image.show()
+```
+
+## Adding files to a branch
+I then added a jpeg file to this directory of 'rick rolls' which I moved from my downloads folderas you can see the folder now contains the program and the picture:
+```
+AlexHowland@Toms-MacBook-Pro-2 Favourite % mv /Users/AlexHowland/Downloads/rick_rolls.jpeg /Users/AlexHowland/Documents/CFG-Assignments/Favourite
+AlexHowland@Toms-MacBook-Pro-2 Favourite % ls
+favourite.py	rick_rolls.jpeg
+```
+
+I used the git status command to check the status, as you can see I had a change to the favourite.py file and a new untracked file (the picture I just added):
+```
+AlexHowland@Toms-MacBook-Pro-2 Favourite % git status
+On branch if_chocolate
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   favourite.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	rick_rolls.jpeg
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+## Adding commits with meaningful messages
+I then added a commit on this branch using the "git add ." command to add all of the above changes and then the "git commit -m 'message'" command:
+```
+AlexHowland@Toms-MacBook-Pro-2 Favourite % git add .
+AlexHowland@Toms-MacBook-Pro-2 Favourite % git status
+On branch if_chocolate
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   favourite.py
+	new file:   rick_rolls.jpeg
+
+AlexHowland@Toms-MacBook-Pro-2 Favourite % git commit -m 'added if chocolate function to favourite program'
+[if_chocolate 3ffc0b9] added if chocolate function to favourite program
+ 2 files changed, 9 insertions(+)
+ create mode 100644 Favourite/rick_rolls.jpeg
+```
+
+I then used the git push command to push the branch and new commit to Github:
+```
+AlexHowland@Toms-MacBook-Pro-2 Favourite % git push
+fatal: The current branch if_chocolate has no upstream branch.
+To push the current branch and set the remote as upstream, use
+
+    git push --set-upstream origin if_chocolate
+
+To have this happen automatically for branches without a tracking
+upstream, see 'push.autoSetupRemote' in 'git help config'.
+
+AlexHowland@Toms-MacBook-Pro-2 Favourite % git push --set-upstream origin if_chocolate
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 45.96 KiB | 11.49 MiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'if_chocolate' on GitHub by visiting:
+remote:      https://github.com/branticus94/CFG-Assignments/pull/new/if_chocolate
+remote: 
+To github.com:branticus94/CFG-Assignments.git
+ * [new branch]      if_chocolate -> if_chocolate
+branch 'if_chocolate' set up to track 'origin/if_chocolate'.
+```
+
+## Opening a pull request
+I then went to Github to open my pull request:
+![image](https://github.com/user-attachments/assets/95202c87-5585-4311-94c8-e32d4671a45a)
+![image](https://github.com/user-attachments/assets/c2f28b28-a54e-4252-82a2-84fd13a6d567)
+
+I reviewed the changes I made:
+![image](https://github.com/user-attachments/assets/dab6b4b7-4672-490b-a341-7908df96db8f)
+
+I then clicked 'create pull request':
+![image](https://github.com/user-attachments/assets/2d102489-b9bc-4046-8642-993811be8e99)
+
+As you can see this added my pull request:
+![image](https://github.com/user-attachments/assets/64047202-22a7-4d8c-9763-45b689c67f1e)
+
+## Merging and deploying to main branch
+I then merged the pull request deploying to the main branch:
+![image](https://github.com/user-attachments/assets/a62bdbbe-bfe6-4650-bab9-c8a0b6a9fd91)
+
+As you can see I am on the main branch and can now see my new file 'rick_rolls.jpeg' as well as my updated favourite.py file:
+![image](https://github.com/user-attachments/assets/f5d2987b-2a55-4dc7-81ed-6d240c018fff)
 
 # Creating a .gitignore, explaining what it is for
 Gitignore files are important files which allow the user to hide certain files or parts of the project which you would not want to share, protecting the git repository. It acts as a list of instructions of files or file directories or types of files that git needs to ignore. A .gitignore file is typically created in the repository's root directory.
