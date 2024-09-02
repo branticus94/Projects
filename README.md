@@ -170,3 +170,39 @@ AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments %
 
 I then used vim to review the file and continue documenting and working on my local machine (as you can see from my screenshot!:
 ![screenshot of using vim to edit README.md file](pullrequestvim.png)
+
+I then repeated the process (getting a little quicker this time!) to send my local changes back to Github! So happy that I've managed to make it communicate both ways 😄
+
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % vi README.md
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	pullrequestvim.png
+
+no changes added to commit (use "git add" and/or "git commit -a")
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add .
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git commit -m 'edited README.md describing pull request and edit markdown in vim'
+[main 293cb1f] edited README.md describing pull request and edit markdown in vim
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+ create mode 100644 pullrequestvim.png
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git push
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 1.05 MiB | 13.72 MiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:branticus94/CFG-Assignments.git
+   30589f5..293cb1f  main -> main
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % 
+```
