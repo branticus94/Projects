@@ -150,7 +150,7 @@ To test out the "git pull" command I edited the markdown file in the github usin
 
 <img width="800" alt="image" src="https://github.com/user-attachments/assets/0ad8105c-ed3f-4868-a9ef-4cc84557812d">
 
-Once I had completed some of my write up I made a few commits along the way to allow me to track files! I then reverted to the terminal to test the connection and whether I could obtain the changes on my terminal, as you can see from the below I used the git pull command which produced a fast forward merge as there were no conflicts withere were several insertions and deletions to the README file I initially created: 
+Once I had completed some of my write up, making a few commits along the way and testing the output/fixing any bugs (note to self: backticks for quoting code rather than single quotes!) to allow me to track my work! I then reverted to the terminal to test the connection and whether I could obtain the changes on my terminal, as you can see from the below I used the git pull command which produced a fast forward merge as there were no conflicts withere were several insertions and deletions to the README file I initially created: 
 
 ```
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git pull
@@ -167,3 +167,6 @@ Fast-forward
  1 file changed, 100 insertions(+), 14 deletions(-)
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % 
 ```
+
+I then used vim to review the file and continue documenting and working on my local machine (as you can see from my screenshot!:
+![screenshot of using vim to edit README.md file](pullrequestvim.png)
