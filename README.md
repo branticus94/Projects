@@ -53,7 +53,7 @@ In order to fulfil the requirements I needed to create a repo on github named CF
 
 ![image](https://github.com/user-attachments/assets/aaf5df65-14cc-41cb-be50-6952a23f729e)
 
-I then used the computer terminal to create my file for upload to the remote repo. I first navigated  to the folder I wish to create my folder in using  the cd command (change directory), my preferred folder being documents. I checked I was in the correct directory with ls (list) command: 
+I then used the computer terminal to create my file for upload to the remote repo. I first navigated  to the folder I wish to create my folder in using  the "cd" command (change directory), my preferred folder being documents. I checked I was in the correct directory with "ls" (list) command: 
 
 ```
 AlexHowland@Toms-MacBook-Pro-2 ~ % ls
@@ -64,7 +64,7 @@ AlexHowland@Toms-MacBook-Pro-2 Documents % ls
 CFG Degree		CFG Python		CV and Job Applications
 ```
 
-Once  I was in the correct location I made a directory using the mkdir command called CFG-Assignments, again checking the output of my code as I went:
+Once  I was in the correct location I made a directory using the "mkdir" command, naming the directory CFG-Assignments, again checking the output of my code as I went:
 
 ```
 AlexHowland@Toms-MacBook-Pro-2 Documents % mkdir CFG-Assignments
@@ -73,7 +73,7 @@ CFG Degree		CFG-Assignments
 CFG Python		CV and Job Applications
 ```
 
-Once the folder was created I used the cd command to change directory to within the folder, followed by the git init command to initialise git within the directory:
+Once the folder was created I used the "cd" command to change directory to within the folder, followed by the "git init" command to initialise git within the directory:
 ```
 AlexHowland@Toms-MacBook-Pro-2 Documents % cd CFG-Assignments
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git init
@@ -90,7 +90,7 @@ hint: 	git branch -m <name>
 Initialized empty Git repository in /Users/AlexHowland/Documents/CFG-Assignments/.git/
 ```
 
-I created a readme file using the touch command, confirming the output with the ls command:
+I created a readme file using the "touch" command, confirming the output with the "ls" command:
 ```
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % touch README.md
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls
@@ -111,7 +111,7 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 ```
 
-I used the ''git add'' command to move my file from the local working directory into the local staging area to prepare for  the commit, using the git status command you can see I now have one file to be committed:
+I used the ''git add'' command to move my file from the local working directory into the local staging area to prepare for  the commit, using the "git status" command you can see I now have one file to be committed:
 ```
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add README.md
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git status  
@@ -124,7 +124,7 @@ Changes to be committed:
 	new file:   README.md
 ```
 
-I then used git commit to move the file from the local staging area to the local repo with the message initial commit, I can see that there is one file changed with no insertions/deletions:
+I then used "git commit" to move the file from the local staging area to the local repo with the message _'initial commit'_, I can see that there is one file changed with no insertions/deletions:
 ```
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git commit -m 'initial commit'
 [master (root-commit) 4b1de82] initial commit
@@ -144,4 +144,26 @@ Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 To github.com:branticus94/CFG-Assignments.git
  * [new branch]      main -> main
 branch 'main' set up to track 'origin/main'.
+```
+
+To test out the "git pull" command I edited the markdown file in the github using the GUI:
+
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/0ad8105c-ed3f-4868-a9ef-4cc84557812d">
+
+Once I had completed some of my write up I made a few commits along the way to allow me to track files! I then reverted to the terminal to test the connection and whether I could obtain the changes on my terminal, as you can see from the below I used the git pull command which produced a fast forward merge as there were no conflicts withere were several insertions and deletions to the README file I initially created: 
+
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git pull
+remote: Enumerating objects: 11, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 9 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (9/9), 5.62 KiB | 523.00 KiB/s, done.
+From github.com:branticus94/CFG-Assignments
+   f8a7b68..02ef326  main       -> origin/main
+Updating f8a7b68..02ef326
+Fast-forward
+ README.md | 114 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++--------------
+ 1 file changed, 100 insertions(+), 14 deletions(-)
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % 
 ```
