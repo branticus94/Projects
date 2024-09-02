@@ -65,26 +65,26 @@ In order to fulfil the requirements I needed to create a repo on github named CF
 
 I then used the computer terminal to create my file for upload to the remote repo. I first navigated  to the folder I wish to create my folder in using  the cd command (change directory), my preferred folder being documents. I checked I was in the correct directory with ls (list) command: 
 
-'''
+```
 AlexHowland@Toms-MacBook-Pro-2 ~ % ls
 Applications	Documents	Library		Music		Public
 Desktop		Downloads	Movies		Pictures	PycharmProjects
 AlexHowland@Toms-MacBook-Pro-2 ~ % cd Documents
 AlexHowland@Toms-MacBook-Pro-2 Documents % ls
 CFG Degree		CFG Python		CV and Job Applications
-'''
+```
 
 Once  I was in the correct location I made a directory using the mkdir command called CFG-Assignments, again checking the output of my code as I went:
 
-'''
+```
 AlexHowland@Toms-MacBook-Pro-2 Documents % mkdir CFG-Assignments
 AlexHowland@Toms-MacBook-Pro-2 Documents % ls
 CFG Degree		CFG-Assignments
 CFG Python		CV and Job Applications
-'''
+```
 
 Once the folder was created I used the cd command to change directory to within the folder, followed by the git init command to initialise git within the directory:
-'''
+```
 AlexHowland@Toms-MacBook-Pro-2 Documents % cd CFG-Assignments
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git init
 hint: Using 'master' as the name for the initial branch. This default branch name
@@ -98,17 +98,17 @@ hint: 'development'. The just-created branch can be renamed via this command:
 hint: 
 hint: 	git branch -m <name>
 Initialized empty Git repository in /Users/AlexHowland/Documents/CFG-Assignments/.git/
-'''
+```
 
 I created a readme file using the touch command, confirming the output with the ls command:
-'''
+```
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % touch README.md
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls
 README.md
-'''
+```
 
 I then checked the git status, as you can see I am on the master/main branch, there have been no commits and I have one untracked file, the README.md file.  
-'''
+```
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git status
 On branch master
 
@@ -119,10 +119,10 @@ Untracked files:
 	README.md
 
 nothing added to commit but untracked files present (use "git add" to track)
-'''
+```
 
 I used the ''git add'' command to move my file from the local working directory into the local staging area to prepare for  the commit, using the git status command you can see I now have one file to be committed:
-'''
+```
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add README.md
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git status  
 On branch master
@@ -132,18 +132,18 @@ No commits yet
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 	new file:   README.md
-'''
+```
 
 I then used git commit to move the file from the local staging area to the local repo with the message initial commit, I can see that there is one file changed with no insertions/deletions:
-'''
+```
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git commit -m 'initial commit'
 [master (root-commit) 4b1de82] initial commit
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 README.md
-'''
+```
 
 Finally to move the file from the local repo to the remote repo I performed the following. I used the git remote add origin command to specify the location of the remote repo where I wish to push/pull my files to/from. The git branch -M main command is used to rename the current branch from master to main to avoid naming conflicts. Finally I used the git push command to send my files to the remote repo on Github: 
-'''
+```
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git remote add origin git@github.com:branticus94/CFG-Assignments.git
 git branch -M main
 git push -u origin main
@@ -154,4 +154,4 @@ Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 To github.com:branticus94/CFG-Assignments.git
  * [new branch]      main -> main
 branch 'main' set up to track 'origin/main'.
-'''
+```
