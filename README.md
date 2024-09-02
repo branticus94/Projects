@@ -46,7 +46,11 @@ Favourite 5 cuisines in order of preference:
 > This list is not exhausitive, will eat any and all food 😆.
 
 # Previous CFG Degree Projects
+I am thrilled to have been selected for the CFG degree. I have had the coding 💻 bug for a few years now and recently took part in the Python and apps kickstarter course!
 
+I worked with a team of two other coders to create a nifty little [spreadsheet analysis application](https://github.com/branticus94/CFG_Python_Project/blob/main/SpreadsheetAnalysis.py) in python, here is a little video tour of our project: 
+
+https://github.com/user-attachments/assets/ac460154-79c7-4c34-817e-c2ca8e159863
 
 # How I will be using Github for this assignment
 I will be using Github for this assignment as a remote repository to store code. 
