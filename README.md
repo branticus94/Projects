@@ -230,12 +230,133 @@ The .gitignore file is then configured to either ignore specific files or direct
 - Ignoring specific directories by adding a slash to the directory name
 - Ignoring files by extension using an asteriks before the file extension
 
-With a file(s) of your choice, demonstrate the following:
-○ Checking the status
-○ Creating a branch
-○ Adding files to a branch
-○ Adding commits with meaningful messages
-○ Opening a pull request
-○ Merging and deploying to main branch
-If needed, take screenshots of the process and add to your README file.
-+ Create requirements.txt (can be empty) and briefly explain what it is for
+I tested this out on my own machine I first created a secrets.txt file and Secrets directory with a supersecret.txt file within:
+
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % touch secrets.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls
+CharlieCanoeing.jpg	Create repo GitHub.png	README.md		Secrets			pullrequestvim.png	secrets.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % vi secrets.txt   
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add .
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git commit -m 'added secret file with empty gitignore'
+[main 9ba08ff] added secret folder and file with empty gitignore
+ 1 file changed, 1 insertion(+)
+ create mode 100644 secrets.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 365 bytes | 365.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:branticus94/CFG-Assignments.git
+   d3944bd..9ba08ff  main -> main
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % cd Secrets
+AlexHowland@Toms-MacBook-Pro-2 Secrets % touch supersecret.txt
+AlexHowland@Toms-MacBook-Pro-2 Secrets % ls
+supersecret.txt
+AlexHowland@Toms-MacBook-Pro-2 Secrets % cd ..
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add .
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git commit -m 'added secret folder'
+[main 31a80df] added secret folder
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 Secrets/supersecret.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 326 bytes | 326.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:branticus94/CFG-Assignments.git
+   9ba08ff..31a80df  main -> main
+```
+
+As you can see when I pushed these files with an empty .gitignore file my secrets were shared with Github (oh no!):
+![image](https://github.com/user-attachments/assets/29c349c7-f566-4982-97b6-7188042e515c)
+
+I wouldn't want this to happen so I went about removing the files as per the below:
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % rm secrets.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % cd Secrets
+AlexHowland@Toms-MacBook-Pro-2 Secrets % ls
+supersecret.txt
+AlexHowland@Toms-MacBook-Pro-2 Secrets % rm supersecret.txt
+AlexHowland@Toms-MacBook-Pro-2 Secrets % cd ..
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % rmdir Secrets
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls
+CharlieCanoeing.jpg	Create repo GitHub.png	README.md		pullrequestvim.png
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add .
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git commit -m 'removed secret files ready to test .gitignore'
+[main 55df3d2] removed secret files ready to test .gitignore
+ 2 files changed, 1 deletion(-)
+ delete mode 100644 Secrets/supersecret.txt
+ delete mode 100644 secrets.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git push
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 255 bytes | 255.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:branticus94/CFG-Assignments.git
+   31a80df..55df3d2  main -> main
+```
+
+As you can see my secrets were removed: 
+![image](https://github.com/user-attachments/assets/d05a6cfd-d845-4348-a2eb-b245fe8b1a46)
+
+I re-made the Secrets directory and secret.txt file using ls to prove their existence on my local machine:
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % mkdir Secrets
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % cd Secrets
+AlexHowland@Toms-MacBook-Pro-2 Secrets % touch supersecret.txt
+AlexHowland@Toms-MacBook-Pro-2 Secrets % cd ..
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % touch secret.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls
+CharlieCanoeing.jpg	Create repo GitHub.png	README.md		Secrets			pullrequestvim.png	secret.txt
+```
+
+I then update my .gitignore file using vim, pushing the results to my github repo:
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % vi .gitignore
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % cat .gitignore
+# Ignore secret file 
+secret.txt
+
+# Ignore secrets folder 
+Secrets/
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add
+Nothing specified, nothing added.
+hint: Maybe you wanted to say 'git add .'?
+hint: Turn this message off by running
+hint: "git config advice.addEmptyPathspec false"
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add .
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git commit -m 'updated .gitignore'
+[main b4e60a8] updated .gitignore
+ 1 file changed, 5 insertions(+)
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 331 bytes | 331.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:branticus94/CFG-Assignments.git
+   55df3d2..b4e60a8  main -> main
+```
+
+My .gitignore file has now been updated on github:
+![image](https://github.com/user-attachments/assets/d9b72f41-7693-4bbf-bd47-b46421dcf516)
+![image](https://github.com/user-attachments/assets/d379c739-33d3-47d2-a85b-d1f726d8752d)
+
+...and my secret files are safe and sound on my local machine, woohoo! 🥳:
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls
+CharlieCanoeing.jpg	Create repo GitHub.png	README.md		Secrets			pullrequestvim.png	secret.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments %
+```
