@@ -4,7 +4,7 @@
 - [Previous CFG Degree Projects](#previous-cfg-degree-projects)
 - [How I will be using Github for this assignment](#how-i-will-be-using-github-for-this-assignment)
 - [Creating a .gitignore, explaining what it is for! (What poetry! 📚)](#creating-a-gitignore-explaining-what-it-is-for)
-- [Creating requirements.txt (can be empty), explaining what it is for](#creating-requirementstxt-can-be-empty-explaining-what-it-is-for)
+- [Creating a requirements.txt (can be empty), explaining what it is for](#creating-a-requirementstxt-can-be-empty-explaining-what-it-is-for)
 
 # :woman: **About Me!**
 
@@ -213,7 +213,7 @@ To github.com:branticus94/CFG-Assignments.git
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % 
 ```
 
-# Creating a .gitignore, explaining what it is for!
+# Creating a .gitignore, explaining what it is for
 Gitignore files are important files which allow the user to hide certain files or parts of the project which you would not want to share, protecting the git repository. It acts as a list of instructions of files or file directories or types of files that git needs to ignore. A .gitignore file is typically created in the repository's root directory.
 
 Examples of such files would be files containing sensitive information (e.g. personal passwords, API keys, security certificates), files which are large as these bloat the system (e.g. compiled source), packages which have been used to make the program, files which hold local logs/databases operating system generated files (e.g. DS_store - mac file which holds information about the folder a file is in when viewing it using finder) or environment variables. 
@@ -362,4 +362,31 @@ AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls -a
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % 
 ```
 
-# Creating requirements.txt (can be empty), explaining what it is for
+# Creating a requirements.txt (can be empty), explaining what it is for
+A requirements.txt is a text file which lists all of a python projects dependencies[^2] in one place. 
+
+This is important for several reasons:
+- Makes project easily reproducible on another machine - same environment allows you to produce the same results (hopefully!)
+- Ensures compatibility - helps avoid conflicts between packages by ensuring the correct versions which currently work together are again used together on other machines
+- When deploying the file a requirements.txt file is provided allowing the dependencies to be installed correctly
+- Can manage dependencies (add/update/remove packages) easily as needed without manually keeping note of them.
+
+One could use the command line to create an write a requirements.txt file and write the packages in the following format:
+```
+package_name == version_number
+```
+However this can get quite tedious. Thankfully, from my research I understand this can be done for you using an IDE (woohoo! 🥳).
+
+I therefore tested this out by opening my CFG python project using Pycharm IDE:
+<img width="1440" alt="Screenshot 2024-09-02 at 13 37 40" src="https://github.com/user-attachments/assets/decb96f8-5d98-40a4-8246-284c18ede373">
+
+I used the following pip[^3] command to generate the file:
+```
+pip freeze › requirements.txt
+```
+
+As if by magic the file was created and added straight to my project:
+<img width="1440" alt="Screenshot 2024-09-02 at 13 37 46" src="https://github.com/user-attachments/assets/6d97e575-1fcb-4e03-83d3-4dcccd40f9be">
+
+[^2]: Libraries or packages created by others which are used to make the project at hand e.g. matplot lib is a maths library which is commonly used
+[^3]: Pip is a package manager for python packages or modules.
