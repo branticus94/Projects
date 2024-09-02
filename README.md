@@ -4,6 +4,7 @@
 - [Previous CFG Degree Projects](#previous-cfg-degree-projects)
 - [How I will be using Github for this assignment](#how-i-will-be-using-github-for-this-assignment)
 - [Creating a .gitignore, explaining what it is for! (What poetry! 📚)](https://github.com/branticus94/CFG-Assignments/edit/main/README.md#creating-a-gitignore-explaining-what-it-is-for)
+- [Creating requirements.txt (can be empty), explaining what it is for]()
 
 # :woman: **About Me!**
 
@@ -356,7 +357,10 @@ My .gitignore file has now been updated on github:
 
 ...and my secret files are safe and sound on my local machine, woohoo! 🥳:
 ```
-AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls
-CharlieCanoeing.jpg	Create repo GitHub.png	README.md		Secrets			pullrequestvim.png	secret.txt
-AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments %
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls -a
+.			.git			CharlieCanoeing.jpg	README.md		pullrequestvim.png
+..			.gitignore		Create repo GitHub.png	Secrets			secret.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % 
 ```
+
+# Creating requirements.txt (can be empty), explaining what it is for
