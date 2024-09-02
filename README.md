@@ -44,17 +44,7 @@ Favourite 5 cuisines in order of preference:
 > This list is not exhausitive, will eat any and all food 😆.
 
 # Previous CFG Degree Projects
-I was thrilled to  
 
-+ With a file(s) of your choice, demonstrate the following:
-○ Checking the status
-○ Creating a branch
-○ Adding files to a branch
-○ Adding commits with meaningful messages
-○ Opening a pull request
-○ Merging and deploying to main branch
-If needed, take screenshots of the process and add to your README file.
-+ Create .gitignore (can be empty) and briefly explain what it is for
 
 # How I will be using Github for this assignment
 I will be using Github for this assignment as a remote repository to store code. 
