@@ -24,7 +24,7 @@ Proud mom to a beautiful 4 month old boy named Charlie[^1]
     
   <summary>👶🍼 Peekaboo!</summary>
   
-  ![Picture of my adorable baby](CharlieCanoeing.jpg)
+  ![Picture of my adorable baby](Photos/CharlieCanoeing.jpg)
     
   </details>
 
@@ -175,7 +175,7 @@ AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments %
 ```
 
 I then used vim to review the file and continue documenting and working on my local machine (as you can see from my screenshot!:
-![screenshot of using vim to edit README.md file](pullrequestvim.png)
+![screenshot of using vim to edit README.md file](Photos/pullrequestvim.png)
 
 I then repeated the process (getting a little quicker this time!) to send my local changes back to Github! So happy that I've managed to make it communicate both ways 😄
 

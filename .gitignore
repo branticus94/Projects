@@ -3,3 +3,6 @@ secret.txt
 
 # Ignore secrets folder 
 Secrets/
+
+# Ignore DS store
+**/.DS_Store
