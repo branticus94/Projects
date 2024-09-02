@@ -1,0 +1,5 @@
+# Ignore secret file 
+secret.txt
+
+# Ignore secrets folder 
+Secrets/
