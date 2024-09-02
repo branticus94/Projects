@@ -209,9 +209,26 @@ AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments %
 ```
 
 # Creating a .gitignore, explaining what it is for!
-Gitignore files are important files which allow the user to hide certain files or parts of the project which you would not want to share, protecting the git repository. It acts as a list of instructions of files or file directories or types of files that git needs to ignore. a gitignore file is typically created in the repository's root directory. 
+Gitignore files are important files which allow the user to hide certain files or parts of the project which you would not want to share, protecting the git repository. It acts as a list of instructions of files or file directories or types of files that git needs to ignore. A .gitignore file is typically created in the repository's root directory.
 
-Examples of such files would be files containing sensitive information (e.g. personal passwords, API keys, security certificates), files which are large as these bloat the system, files which hold local logs or environment variables
+Examples of such files would be files containing sensitive information (e.g. personal passwords, API keys, security certificates), files which are large as these bloat the system (e.g. compiled source), packages which have been used to make the program, files which hold local logs/databases operating system generated files (e.g. DS_store - mac file which holds information about the folder a file is in when viewing it using finder) or environment variables. 
+
+You should use a .gitignore file to allow your repo to be clean (i.e. free from unnecessary files), secure and efficient. 
+
+There are a couple of ways to create this file, one would be using the terminal. I would do this by navigatting to the root directory of the repo and using the "touch command", I was already in the root directory at this stage:
+
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % touch .gitignore
+```
+
+I would then use nano/vim (or indeed any text editor/IDE) to open and edit the file.
+
+To save some time I could instead use templates (widely available for various programming languages and frameworks) as a starting point these can be found on [Github](https://github.com/github/gitignore).
+
+The .gitignore file is then configured to either ignore specific files or directories by:
+- Listing their name
+- Ignoring specific directories by adding a slash to the directory name
+- Ignoring files by extension using an asteriks before the file extension
 
 With a file(s) of your choice, demonstrate the following:
 ○ Checking the status
@@ -221,5 +238,4 @@ With a file(s) of your choice, demonstrate the following:
 ○ Opening a pull request
 ○ Merging and deploying to main branch
 If needed, take screenshots of the process and add to your README file.
-+ Create .gitignore (can be empty) and briefly explain what it is for
 + Create requirements.txt (can be empty) and briefly explain what it is for
