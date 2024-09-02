@@ -3,16 +3,17 @@
 - [About Me](#woman-about-me)
 - [Previous CFG Degree Projects](#previous-cfg-degree-projects)
 - [How I will be using Github for this assignment](#how-i-will-be-using-github-for-this-assignment)
+- [Creating a .gitignore, explaining what it is for! (What poetry! 📚)](https://github.com/branticus94/CFG-Assignments/edit/main/README.md#creating-a-gitignore-explaining-what-it-is-for)
 
 # :woman: **About Me!**
 
 > [!WARNING]
 > Have tried to use as many markdown (and github flavoured markdown) features as possible so that I can refer to this page at a later date, please note this may elicit a sense that your timeline has reverted to the 1990s when myspace was a thing and people tried to make their page look as fancy as possible by using every known feature!
 
-### Name
+## Name
 Alexandra aka ~~Branticus94 (please don't laugh at my username I made it circa 2019 when I was first dabbling with code, unmarried (hence Brant), using a nickname I was adorned with during my school years when I was rather fond of greek/roman history and mythology, think: this is sparta)~~ 'Alex' Howland
 
-### Fun Facts
+## Fun Facts
 
 Proud mom to a beautiful 4 month old boy named Charlie[^1] 
 > [!CAUTION]
@@ -206,3 +207,19 @@ To github.com:branticus94/CFG-Assignments.git
    30589f5..293cb1f  main -> main
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % 
 ```
+
+# Creating a .gitignore, explaining what it is for!
+Gitignore files are important files which allow the user to hide certain files or parts of the project which you would not want to share, protecting the git repository. It acts as a list of instructions of files or file directories or types of files that git needs to ignore. a gitignore file is typically created in the repository's root directory. 
+
+Examples of such files would be files containing sensitive information (e.g. personal passwords, API keys, security certificates), files which are large as these bloat the system, files which hold local logs or environment variables
+
+With a file(s) of your choice, demonstrate the following:
+○ Checking the status
+○ Creating a branch
+○ Adding files to a branch
+○ Adding commits with meaningful messages
+○ Opening a pull request
+○ Merging and deploying to main branch
+If needed, take screenshots of the process and add to your README file.
++ Create .gitignore (can be empty) and briefly explain what it is for
++ Create requirements.txt (can be empty) and briefly explain what it is for
