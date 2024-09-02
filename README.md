@@ -3,7 +3,8 @@
 - [About Me](#woman-about-me)
 - [Previous CFG Degree Projects](#previous-cfg-degree-projects)
 - [How I will be using Github for this assignment](#how-i-will-be-using-github-for-this-assignment)
-- [Creating a .gitignore, explaining what it is for! (What poetry! 📚)](https://github.com/branticus94/CFG-Assignments/edit/main/README.md#creating-a-gitignore-explaining-what-it-is-for)
+- [Creating a .gitignore, explaining what it is for! (What poetry! 📚)](#creating-a-gitignore-explaining-what-it-is-for)
+- [Creating a requirements.txt (can be empty), explaining what it is for](#creating-a-requirementstxt-can-be-empty-explaining-what-it-is-for)
 
 # :woman: **About Me!**
 
@@ -45,7 +46,11 @@ Favourite 5 cuisines in order of preference:
 > This list is not exhausitive, will eat any and all food 😆.
 
 # Previous CFG Degree Projects
+I am thrilled to have been selected for the CFG degree. I have had the coding 💻 bug for a few years now and recently took part in the Python and apps kickstarter course!
 
+I worked with a team of two other coders to create a nifty little [spreadsheet analysis application](https://github.com/branticus94/CFG_Python_Project/blob/main/SpreadsheetAnalysis.py) in python, here is a little video tour of our project: 
+
+https://github.com/user-attachments/assets/ac460154-79c7-4c34-817e-c2ca8e159863
 
 # How I will be using Github for this assignment
 I will be using Github for this assignment as a remote repository to store code. 
@@ -208,7 +213,7 @@ To github.com:branticus94/CFG-Assignments.git
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % 
 ```
 
-# Creating a .gitignore, explaining what it is for!
+# Creating a .gitignore, explaining what it is for
 Gitignore files are important files which allow the user to hide certain files or parts of the project which you would not want to share, protecting the git repository. It acts as a list of instructions of files or file directories or types of files that git needs to ignore. A .gitignore file is typically created in the repository's root directory.
 
 Examples of such files would be files containing sensitive information (e.g. personal passwords, API keys, security certificates), files which are large as these bloat the system (e.g. compiled source), packages which have been used to make the program, files which hold local logs/databases operating system generated files (e.g. DS_store - mac file which holds information about the folder a file is in when viewing it using finder) or environment variables. 
@@ -230,12 +235,158 @@ The .gitignore file is then configured to either ignore specific files or direct
 - Ignoring specific directories by adding a slash to the directory name
 - Ignoring files by extension using an asteriks before the file extension
 
-With a file(s) of your choice, demonstrate the following:
-○ Checking the status
-○ Creating a branch
-○ Adding files to a branch
-○ Adding commits with meaningful messages
-○ Opening a pull request
-○ Merging and deploying to main branch
-If needed, take screenshots of the process and add to your README file.
-+ Create requirements.txt (can be empty) and briefly explain what it is for
+I tested this out on my own machine I first created a secrets.txt file and Secrets directory with a supersecret.txt file within:
+
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % touch secrets.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls
+CharlieCanoeing.jpg	Create repo GitHub.png	README.md		Secrets			pullrequestvim.png	secrets.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % vi secrets.txt   
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add .
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git commit -m 'added secret file with empty gitignore'
+[main 9ba08ff] added secret folder and file with empty gitignore
+ 1 file changed, 1 insertion(+)
+ create mode 100644 secrets.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 365 bytes | 365.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:branticus94/CFG-Assignments.git
+   d3944bd..9ba08ff  main -> main
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % cd Secrets
+AlexHowland@Toms-MacBook-Pro-2 Secrets % touch supersecret.txt
+AlexHowland@Toms-MacBook-Pro-2 Secrets % ls
+supersecret.txt
+AlexHowland@Toms-MacBook-Pro-2 Secrets % cd ..
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add .
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git commit -m 'added secret folder'
+[main 31a80df] added secret folder
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 Secrets/supersecret.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 326 bytes | 326.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:branticus94/CFG-Assignments.git
+   9ba08ff..31a80df  main -> main
+```
+
+As you can see when I pushed my code, these files with an empty .gitignore file my secrets were shared with Github (oh no!):
+![image](https://github.com/user-attachments/assets/29c349c7-f566-4982-97b6-7188042e515c)
+
+I wouldn't want this to happen so I went about removing the files as per the below:
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % rm secrets.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % cd Secrets
+AlexHowland@Toms-MacBook-Pro-2 Secrets % ls
+supersecret.txt
+AlexHowland@Toms-MacBook-Pro-2 Secrets % rm supersecret.txt
+AlexHowland@Toms-MacBook-Pro-2 Secrets % cd ..
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % rmdir Secrets
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls
+CharlieCanoeing.jpg	Create repo GitHub.png	README.md		pullrequestvim.png
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add .
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git commit -m 'removed secret files ready to test .gitignore'
+[main 55df3d2] removed secret files ready to test .gitignore
+ 2 files changed, 1 deletion(-)
+ delete mode 100644 Secrets/supersecret.txt
+ delete mode 100644 secrets.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git push
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 255 bytes | 255.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:branticus94/CFG-Assignments.git
+   31a80df..55df3d2  main -> main
+```
+
+As you can see my secrets were removed: 
+![image](https://github.com/user-attachments/assets/d05a6cfd-d845-4348-a2eb-b245fe8b1a46)
+
+I re-made the Secrets directory (with a supersecret.txt file inside) and secret.txt file using the "ls" command to prove their existence on my local machine:
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % mkdir Secrets
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % cd Secrets
+AlexHowland@Toms-MacBook-Pro-2 Secrets % touch supersecret.txt
+AlexHowland@Toms-MacBook-Pro-2 Secrets % cd ..
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % touch secret.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls
+CharlieCanoeing.jpg	Create repo GitHub.png	README.md		Secrets			pullrequestvim.png	secret.txt
+```
+
+I then update my .gitignore file using vim, pushing the results to my github repo:
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % vi .gitignore
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % cat .gitignore
+# Ignore secret file 
+secret.txt
+
+# Ignore secrets folder 
+Secrets/
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add .
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git commit -m 'updated .gitignore'
+[main b4e60a8] updated .gitignore
+ 1 file changed, 5 insertions(+)
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 331 bytes | 331.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To github.com:branticus94/CFG-Assignments.git
+   55df3d2..b4e60a8  main -> main
+```
+
+My .gitignore file has now been updated on github:
+![image](https://github.com/user-attachments/assets/d9b72f41-7693-4bbf-bd47-b46421dcf516)
+![image](https://github.com/user-attachments/assets/d379c739-33d3-47d2-a85b-d1f726d8752d)
+
+...and my secret files are safe and sound on my local machine, woohoo! 🥳:
+```
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % ls -a
+.			.git			CharlieCanoeing.jpg	README.md		pullrequestvim.png
+..			.gitignore		Create repo GitHub.png	Secrets			secret.txt
+AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % 
+```
+
+# Creating a requirements.txt (can be empty), explaining what it is for
+A requirements.txt is a text file which lists all of a python projects dependencies[^2] in one place. 
+
+This is important for several reasons:
+- Makes project easily reproducible on another machine - same environment allows you to produce the same results (hopefully!)
+- Ensures compatibility - helps avoid conflicts between packages by ensuring the correct versions which currently work together are again used together on other machines
+- When deploying the file a requirements.txt file is provided allowing the dependencies to be installed correctly
+- Can manage dependencies (add/update/remove packages) easily as needed without manually keeping note of them.
+
+One could use the command line to create an write a requirements.txt file and write the packages in the following format:
+```
+package_name == version_number
+```
+However this can get quite tedious. Thankfully, from my research I understand this can be done for you using an IDE (woohoo! 🥳).
+
+I therefore tested this out by opening my CFG python project using Pycharm IDE:
+<img width="1440" alt="Screenshot 2024-09-02 at 13 37 40" src="https://github.com/user-attachments/assets/decb96f8-5d98-40a4-8246-284c18ede373">
+
+I used the following pip[^3] command to generate the file:
+```
+pip freeze › requirements.txt
+```
+
+As if by magic the file was created and added straight to my project:
+<img width="1440" alt="Screenshot 2024-09-02 at 13 37 46" src="https://github.com/user-attachments/assets/6d97e575-1fcb-4e03-83d3-4dcccd40f9be">
+
+[^2]: Libraries or packages created by others which are used to make the project at hand e.g. matplot lib is a maths library which is commonly used
+[^3]: Pip is a package manager for python packages or modules.
