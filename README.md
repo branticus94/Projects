@@ -275,7 +275,7 @@ To github.com:branticus94/CFG-Assignments.git
    9ba08ff..31a80df  main -> main
 ```
 
-As you can see when I pushed these files with an empty .gitignore file my secrets were shared with Github (oh no!):
+As you can see when I pushed my code, these files with an empty .gitignore file my secrets were shared with Github (oh no!):
 ![image](https://github.com/user-attachments/assets/29c349c7-f566-4982-97b6-7188042e515c)
 
 I wouldn't want this to happen so I went about removing the files as per the below:
@@ -310,7 +310,7 @@ To github.com:branticus94/CFG-Assignments.git
 As you can see my secrets were removed: 
 ![image](https://github.com/user-attachments/assets/d05a6cfd-d845-4348-a2eb-b245fe8b1a46)
 
-I re-made the Secrets directory and secret.txt file using ls to prove their existence on my local machine:
+I re-made the Secrets directory (with a supersecret.txt file inside) and secret.txt file using the "ls" command to prove their existence on my local machine:
 ```
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % mkdir Secrets
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % cd Secrets
@@ -330,11 +330,6 @@ secret.txt
 
 # Ignore secrets folder 
 Secrets/
-AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add
-Nothing specified, nothing added.
-hint: Maybe you wanted to say 'git add .'?
-hint: Turn this message off by running
-hint: "git config advice.addEmptyPathspec false"
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git add .
 AlexHowland@Toms-MacBook-Pro-2 CFG-Assignments % git commit -m 'updated .gitignore'
 [main b4e60a8] updated .gitignore
