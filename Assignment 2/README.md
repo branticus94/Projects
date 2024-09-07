@@ -62,7 +62,7 @@ I used the superhero API to help generate a quiz team name by combining the name
 
 I used the ```load_dotenv()``` function from the python-dotenv library to first load the environment variables stored in the .env file. I then used the ```getenv function``` of the built in python library os to get my superherokey saved in the .env file, I stored this in a variable named api_key. 
 
-I then set the base url of the API request as 'https://superheroapi.com/api/' and added the access token followed by the selected id, performing two API requests using the ``.get()``` method of the requests library - one to get the image and one to get the powerstats. I used then used the ```.loads()``` method of the json libraray to convert to json for easy manipulation and saved the data into a variable.
+I then set the base url of the API request as 'https://superheroapi.com/api/' and added the access token followed by the selected id, performing two API requests using the ```.get()``` method of the requests library - one to get the image and one to get the powerstats. I used then used the ```.loads()``` method of the json libraray to convert to json for easy manipulation and saved the data into a variable.
 
 The second API, the open trivia database, did not require a key generated with github. In order to use the database I created a get session token function which  
 called the API endpoint which allows you to retrieve a session token 'https://opentdb.com/api_token.php?command=request', again this used the ```.get()``` method of the requests library to retrieve the data which was then converted to json format for manipulation. 
