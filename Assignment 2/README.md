@@ -52,3 +52,48 @@ Further logic I would like to add:
 - Further game modes e.g. timed mode/lighting round where the player answers as many questions as possible in a given time
 
 **Many thanks for taking the time to review my code and providing feedback. Suggestions for improvements and/or enhancements are welcome!**
+
+# How I used the APIs and how I installed external modules
+I used two APIs for this project:
+1. [Superhero API](c)
+2. [Open Trivia Database](https://opentdb.com)
+
+I used the superhero API to help generate a quiz team name by combining the name of a selected superhero (requesting the user to select a number between 1 and 731 - the maximum number of characters in the database) with the number score of the characters powerstat (out of 6 options). I also wrote the image of the hero to a binary file and displayed it to the user by employing the Image module of the Pillow/PIL library. 
+
+I used the ```load_dotenv()``` function from the python-dotenv library to first load the environment variables stored in the .env file. I then used the ```getenv function``` of the built in python library os to get my superherokey saved in the .env file, I stored this in a variable named api_key. 
+
+I then set the base url of the API request as 'https://superheroapi.com/api/' and added the access token followed by the selected id, performing two API requests using the ``.get()``` method of the requests library - one to get the image and one to get the powerstats. I used then used the ```.loads()``` method of the json libraray to convert to json for easy manipulation and saved the data into a variable.
+
+The second API, the open trivia database, did not require a key generated with github. In order to use the database I created a get session token function which  
+called the API endpoint which allows you to retrieve a session token 'https://opentdb.com/api_token.php?command=request', again this used the ```.get()``` method of the requests library to retrieve the data which was then converted to json format for manipulation. 
+
+This token is called upon opening the app and it allows you to not see the same questions twice. As one could exhaust all the possible questions I also created a reset session token function which hits this API endpoint 'https://opentdb.com/api_token.php?command=reset&token=YOURTOKENHERE' and is called if response code 4 is sent back by the API. I dynamically created different API requests based on user selection of game mode. The API requests looked like this, obviously the parameter values changed depending on game mode: ```https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple```. Again using the get method to retrieve the data and loads method to convert to json. I also hit their other API endpoints - category lookup and category question count lookup so that I could run knockout mode accordingly.
+
+In order to make the app run I relied on a host of built in and external imports. 
+
+I utilised the built in imports such as random, time, datetime, os and csv by adding a list of imports at the top of the file with ```import import_name```:
+```
+# Built in imports
+import json
+import random
+import time
+import datetime
+import os
+import csv
+```
+I then also used several external libraries. In order to use them I first needed to navigate to the terminal to install the packages within my project file. 
+
+In order to do this I used the pip (python install package manager) command ```pip install package_name``` to install the package. 
+
+Once installed, I used import statement at the top of my file again to import the whole library or a particular module as below:
+```
+# External imports
+from playsound import playsound
+import pandas as pd
+from PIL import Image
+from tabulate import tabulate
+from dotenv import load_dotenv
+import requests as req
+```
+
+As mentioned above, I created a requirements.txt file using the ```pip freeze``` command to allow others to setup their environment in a similar manner and install the necessary packages (of the specified version) to their machine in the project file. 
