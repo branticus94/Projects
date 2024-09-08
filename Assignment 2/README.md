@@ -42,6 +42,10 @@ SUPERHERO_API_KEY=your_api_key_here
 ```
 You should be good to go!
 
+5. NB[^1]: When installing the playsound library I encountered an error which stated that my wheel was outdated, after a few hours of playing around with fixes recommended online I found out that if you update the wheel using ``` pip install --upgrade pip setuptools wheel ``` all is well, Woohoo! Just sharing the love incase you encounter this error too! You could always comment out the playsound module import on line 10 of quizpy.py and comment out the calls to playsound which are located at line 48, 414, 528, 547 and 554 in the quizpy.py file - although you will miss out on comical gameplay music!
+   
+[^1]: For the longest time I thought NB stood for "note before" however is actually from the latin "nota bene" - note well, thought this was 
+
 # Ideas for future extension
 
 It would be great to have a full blown GUI for the app!
