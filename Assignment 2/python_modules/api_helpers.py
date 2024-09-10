@@ -4,19 +4,16 @@ import time
 
 # External imports
 import requests as req
-from numpy.f2py.auxfuncs import throw_error
 
-# Have left a multiline comment below detailing the API response codes for my reference.
-"""
-    Response Codes
-    The API appends a "Response Code" to each API Call to help tell developers what the API is doing.
-    Code 0: Success Returned results successfully.
-    Code 1: No Results Could not return results. The API doesn't have enough questions for your query. (Ex. Asking for 50 Questions in a Category that only has 20.)
-    Code 2: Invalid Parameter Contains an invalid parameter. Arguments passed in aren't valid. (Ex. Amount = Five)
-    Code 3: Token Not Found Session Token does not exist.
-    Code 4: Token Empty Session Token has returned all possible questions for the specified query. Resetting the Token is necessary.
-    Code 5: Rate Limit Too many requests have occurred. Each IP can only access the API once every 5 seconds.
-"""
+# API RESPONSE CODE REFERENCE
+# Response Codes
+# The API appends a "Response Code" to each API Call to help tell developers what the API is doing.
+# Code 0: Success Returned results successfully.
+# Code 1: No Results Could not return results. The API doesn't have enough questions for your query. (Ex. Asking for 50 Questions in a Category that only has 20.)
+# Code 2: Invalid Parameter Contains an invalid parameter. Arguments passed in aren't valid. (Ex. Amount = Five)
+# Code 3: Token Not Found Session Token does not exist.
+# Code 4: Token Empty Session Token has returned all possible questions for the specified query. Resetting the Token is necessary.
+# Code 5: Rate Limit Too many requests have occurred. Each IP can only access the API once every 5 seconds.
 
 def get_session_token():
     # Use the get method of the requests library to get a session token -
@@ -91,31 +88,107 @@ def generate_api_request_url(amount=None, category=None, difficulty=None, questi
 
 def get_api_data(api_url, session_token):
     retry_count = 0
-
     while True:
         # Perform the API request with the given URL containing the session token
         request = req.get(api_url)
 
-        # load the error code using json loads method
-        code = json.loads(request.text)['response_code']
+        if request.status_code == 200:
+            # load the error code using json loads method
+            code = json.loads(request.text)['response_code']
 
-        match code:
-            # if the code is 0  return the results data
-            case 0:
-                return json.loads(request.text)['results']
-            # if the code is 4 it means the token is empty and needs to be reset, therefore reset the token
-            case 4:
-                # reset the session token
-                session_token = reset_session_token(session_token)
+            match code:
+                # if the code is 0  return the results data
+                case 0:
+                    return json.loads(request.text)['results']
+                # if the code is 4 it means the token is empty (all questions exhausted) and needs to be reset, therefore reset the token
+                case 4:
+                    # reset the session token
+                    session_token = reset_session_token(session_token)
+                    time.sleep(5)
+                # if the code is 3 token no longer exists therefore remove token from api url string and get new one, add to api url
+                case 3:
+                    api_url = api_url[:-64]
+                    session_token = get_session_token()['token']
+                    api_url = api_url + session_token
+                    time.sleep(5)
+            retry_count += 1
+
+            if retry_count > 5:
+                raise Exception("Retry count exceeded the maximum limit of 5.")
+        else:
+            raise Exception("Status code: " + str(request.status_code))
+
+def generate_api_request_method_2(amount=None, category=None, difficulty=None, question_type=None, token=None):
+    endpoint = "https://opentdb.com/api.php"
+
+    payload = {
+        "amount": amount,
+        "category": category,
+        "difficulty": difficulty,
+        "type": question_type,
+        "token": token
+    }
+
+    response = req.get(url=endpoint, params=payload)
+    response_code = int(response.text[17:18])
+
+    retry_count = 0
+
+    if response.status_code == 200:
+        while True:
+            # Code 0: Success Returned results successfully. Therefore, return the data.
+            if response_code == 0:
+                request_data = response.json()
+                return request_data['results']
+
+            print("\nSorry there has been an error with the HTTP request.\n")
+            time.sleep(5)
+            if response_code == 1:
+                print("Code 1: No Results Could not return results. The API doesn't have enough questions for your query. "
+                      "(Ex. Asking for 50 Questions in a Category that only has 20.). Please report this error to us so "
+                      "that we can fix the parameters")
+            elif response_code == 2:
+                print("Code 2: Invalid Parameter Contains an invalid parameter. Arguments passed in aren't valid. "
+                      "(Ex. Amount = Five) please report this error so that we can fix the parameters")
+            elif response_code ==3:
+                print("Code 3: Token Not Found. Session Token does not exist. Getting a new session token and trying again\n")
+                payload["token"] = get_session_token()['token']
+                response = req.get(url=endpoint, params=payload)
+                response_code = int(response.text[17:18])
                 time.sleep(5)
-            # if the code is 3 token no longer exists therefore remove token from api url string and get new one, add to api url
-            case 3:
-                api_url = api_url[:-64]
-                session_token = get_session_token()['token']
-                api_url = api_url + session_token
+            elif response_code == 4:
+                print("Code 4: Token Empty. Session Token has returned all possible questions for the specified query. Resetting the Token and trying again.\n")
+                token_dictionary = reset_session_token(payload['token'])
+                payload["token"] = token_dictionary['token']
+                response = req.get(url=endpoint, params=payload)
+                response_code = int(response.text[17:18])
                 time.sleep(5)
-        retry_count += 1
+            elif response_code == 5:
+                print("Code 5: Rate Limit Too many requests have occurred. Each IP can only access the API once every 5 seconds. Waiting and trying again")
+                time.sleep(5)
+            else:
+                print("Unknown response code")
+                return
 
-        if retry_count > 5:
-            raise Exception("Retry count exceeded the maximum limit of 5.")
+            retry_count += 1
 
+            if retry_count > 5:
+                raise Exception("Retry count exceeded the maximum limit of 5.")
+    else:
+        raise Exception("Status code: " + str(response.status_code))
+
+
+# testing area for method 2 API request:
+# token =get_session_token()
+# token = token['token']
+# token = "cb5e427a4a464b9828adffd80b856b9a0dc01b12205dcfedac2eff8676336bb7"
+# # api_parameters:
+# amount=31
+# category=10
+# difficulty = 'easy'
+# token=token
+# api_data = generate_api_request_method_2(amount=amount, category=category, token=token, difficulty=difficulty)
+# print(api_data)
+# time.sleep(5)
+# api_data = generate_api_request_method_2(amount=amount, category=category, token=token, difficulty=difficulty)
+# print(api_data)
