@@ -16,7 +16,7 @@ WHITE = '\033[97m'
 RED = '\033[91m'
 GREEN = '\033[92m'
 MAGENTA = '\033[95m'
-RESET = '\033[97m' # called to return to standard terminal text color
+RESET = '\033[97m'
 
 def generate_questions(questions, game_mode, game_round=None):
     # if a round is not specified we are in potluck mode therefore set question number to 0,
@@ -147,7 +147,7 @@ def print_all_categories():
     for category in categories:
         category_names.append(category["name"])
 
-    # Loop ove the list of preselected categories, printing them and delay until print next
+    # Loop over the list of preselected categories, printing them and delay until print next
     for i in range (len(categories)):
         print(f"{i+1}. {category_names[i]}")
         time.sleep(0.25)

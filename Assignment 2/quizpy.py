@@ -525,6 +525,7 @@ def select_and_run_game_mode():
         generate_leaderboard()
     else:
         print_game_over()
+        playsound("assets/fail-muted-trumpet.wav")
         time.sleep(5)
         quit()
 
