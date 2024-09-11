@@ -474,6 +474,9 @@ def generate_leaderboard():
     # filter the leaderboard by game mode
     filtered_leaderboard = leaderboard_remove_datetime[leaderboard_remove_datetime['mode'] == game_mode]
 
+    # Change datatype of score to int
+    filtered_leaderboard['score'] = pd.to_numeric(filtered_leaderboard['score'])
+
     # sort the filtered leaderboard by descending score
     sorted_filtered_leaderboard = filtered_leaderboard.sort_values(by='score', ascending=False,ignore_index=True)
 
