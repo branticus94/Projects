@@ -19,7 +19,7 @@ from python_modules.api_helpers import get_session_token, get_category_question_
 from python_modules.validation_helpers import get_integer, get_yes_no
 from python_modules.question_helpers import generate_questions, select_a_category, display_score
 from python_modules.graphics_helpers import print_banner, print_game_over, print_title_card, print_round_number, \
-    print_game_mode, print_winning_player, print_menu, print_leaderboard
+    print_game_mode, print_winning_player, print_menu, print_leaderboard, print_final_score
 from python_modules.config import psych_up_comments, appearance_comments, agree_responses, easy_mode_comments, medium_mode_comments, \
     hard_mode_comments, all_difficulties_comments, leaderboard_comments
 
@@ -240,12 +240,17 @@ def run_pot_luck_mode():
         # Increment 'i' used to print the round number
         i += 1
 
+    final_score = sum(round_scores)
+
+    # Print the final score
+    print_final_score(final_score)
+
     # Get the current time using the now method of the datetime class in the datetime module
     current_time = datetime.datetime.now()
 
     # use the save_to_leaderboard_csv function defined in the csv_helpers
     # module to save the total score to the leaderboard
-    save_to_leaderboard_csv(score=round_scores, date_time=current_time, game_mode="Pot Luck")
+    save_to_leaderboard_csv(score=final_score, date_time=current_time, game_mode="Pot Luck")
 
     # see if the user wishes to play another game
     play_again()
@@ -338,15 +343,7 @@ def run_knockout_mode():
         # parameters
         request_url = generate_api_request_url(amount=amount, category=category_id, difficulty=selected_difficulty_level, question_type=question_type, token=token)
 
-        # # use the get method from the requests library to hit the API
-        # questions_request = req.get(request_url)
-        #
-        # # Using the loads method from the json library to convert the output to a json format for manipulation
-        # questions_json = json.loads(questions_request.text)
-        #
-        # # getting only the question results from the json
-        # questions_request_results = questions_json['results']
-
+        # use the get_api_data function to get question data
         question_request_results = get_api_data(request_url, token)
 
         # use the generate questions function in the question helpers module to run for a round save the
@@ -368,7 +365,7 @@ def run_knockout_mode():
     total_score = sum(round_scores)
 
     # print the output of the total scores to the user
-    display_score(total_score)
+    print_final_score(total_score)
 
     # get the current time so that it can be added to the leaderboard
     current_time = datetime.datetime.now()
@@ -378,6 +375,7 @@ def run_knockout_mode():
 
     # see if user wants to play again
     play_again()
+
 
 def run_head_to_head_mode():
     # Multiplayer mode will allow two players to play against one another
@@ -475,7 +473,7 @@ def generate_leaderboard():
     filtered_leaderboard = leaderboard_remove_datetime[leaderboard_remove_datetime['mode'] == game_mode]
 
     # Change datatype of score to int
-    filtered_leaderboard['score'] = pd.to_numeric(filtered_leaderboard['score'])
+    filtered_leaderboard.loc[:, 'score'] = pd.to_numeric(filtered_leaderboard['score'])
 
     # sort the filtered leaderboard by descending score
     sorted_filtered_leaderboard = filtered_leaderboard.sort_values(by='score', ascending=False,ignore_index=True)
