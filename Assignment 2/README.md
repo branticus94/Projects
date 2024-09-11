@@ -1,3 +1,13 @@
+# Contents
+- [Description](#description)
+- [Key Features](#key-features)
+- [What is in the file](#what-is-in-the-file)
+- [What you will need to set up the file](#what-you-will-need-to-set-up-the-file)
+- [Ideas for Future Extension](#ideas-for-future-extension)
+- [How I used APIs](#how-i-used-apis)
+- [How I used and installed external modules](#how-i-used-and-installed-external-modules)
+- [Gameplay Video](#gameplay-video)
+
 # Description
 In this assignment I created a console app, written in python, which integrates with the superhero API and the Open Trivia Database. 
 
@@ -57,7 +67,7 @@ Further logic I would like to add:
 
 **Many thanks for taking the time to review my code and providing feedback. Suggestions for improvements and/or enhancements are welcome!**
 
-# How I used the APIs and how I installed external modules
+# How I used APIs
 I used two APIs for this project:
 1. [Superhero API](http://superheroapi.com)
 2. [Open Trivia Database](https://opentdb.com)
@@ -73,6 +83,7 @@ called the API endpoint which allows you to retrieve a session token 'https://op
 
 This token is called upon opening the app, and it allows you to not see the same questions twice. As one could exhaust all the possible questions I also created a reset session token function which hits this API endpoint 'https://opentdb.com/api_token.php?command=reset&token=YOURTOKENHERE' and is called if response code 4 is sent back by the API. I dynamically created different API requests based on user selection of game mode. The API requests looked like this, obviously the parameter values changed depending on game mode: ```https://opentdb.com/api.php?amount=10&category=9&difficulty=easy&type=multiple```. Again using the get method to retrieve the data and loads method to convert to json. I also hit their other API endpoints - category lookup and category question count lookup so that I could run knockout mode accordingly.
 
+# How I used and installed external modules
 In order to make the app run I relied on a host of built-in and external imports. 
 
 I utilised the built-in imports such as random, time, datetime, os and csv by adding a list of imports at the top of the file with ```import import_name```:
@@ -101,3 +112,37 @@ import requests as req
 ```
 
 As mentioned above, I created a requirements.txt file using: ```pip freeze > requirements.txt``` command to allow others to set up their environment in a similar manner and install the necessary packages (of the specified version) to their machine in the project file. 
+
+# Gameplay video
+
+## Contents
+- [Opening Menu and Generate Quiz Name](#opening-menu-and-generate-quiz-name)
+- [Potluck](#potluck)
+- [Knockout](#knockout)
+- [Head to Head](#head-to-head)
+- [Leaderboard](#leaderboard)
+- [Exit](#exit)
+
+### Opening menu and generate quiz name
+The opening menu allows you to set up and start a trivia session. A quiz team name is generated, which helps identify your game in the leaderboard and adds a fun, personalized touch before the trivia begins.
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/2edApUOy0BI/0.jpg)](https://www.youtube.com/watch?v=2edApUOy0BI)
+
+### Potluck
+In the Potluck mode, questions come from a random assortment of categories. There are 3 rounds of 10 questions. The difficulty increases with each round
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/yPhNEKsoONU/0.jpg)](https://www.youtube.com/watch?v=yPhNEKsoONU)
+
+### Knockout
+Knockout mode is an elimination-style game. Players compete to stay in the game by answering correctly, and a wrong answer knocks them out of the competition.
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/S4fmLuaaWh0/0.jpg)](https://www.youtube.com/watch?v=S4fmLuaaWh0)
+
+### Head to head
+In this mode, two players or teams face off against each other in direct competition. They take turns answering questions, and the player or team with the most correct answers wins. There are 10 questions each of a random category/difficulty level.
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/5WPRwBpCk4A/0.jpg)](https://www.youtube.com/watch?v=5WPRwBpCk4A)
+
+### Leaderboard
+The leaderboard mode allows you to see the leaderboard for potluck or knockout mode. Before the scores are released a drum roll plays for added fun!
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Tpp4cp-qLy8/0.jpg)](https://www.youtube.com/watch?v=Tpp4cp-qLy8)
+
+### Exit
+At the end of the game a fun "Wamp Wamp Wamp Waaaaaaaamp" style sound plays and the application ends
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6GSYO1VsLVU/0.jpg)](https://www.youtube.com/watch?v=6GSYO1VsLVU)
