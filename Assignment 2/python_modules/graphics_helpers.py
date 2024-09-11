@@ -16,6 +16,11 @@ def print_game_over():
     game_over = pyfiglet.figlet_format(" Game Over! ")
     print(RED + game_over + RESET,end="")
 
+def print_final_score(score):
+    time.sleep(1)
+    final_score = pyfiglet.figlet_format(f"       Final Score: {score}    ")
+    print(BRIGHT_CYAN + final_score + RESET,end="")
+
 def print_title():
     title = pyfiglet.figlet_format("? ?   Quiz Py   ? ?")
     print(BRIGHT_YELLOW + title + RESET, end="")
