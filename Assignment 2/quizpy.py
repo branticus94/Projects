@@ -15,9 +15,9 @@ from dotenv import load_dotenv
 import requests as req
 
 # Imports from modules I have created within the project
-from python_modules.api_helpers import get_session_token, get_category_question_count, generate_api_request_url, get_api_data
+from python_modules.api_helpers import get_session_token, get_category_question_count, generate_api_request_url, get_api_data, generate_api_request_method_2
 from python_modules.validation_helpers import get_integer, get_yes_no
-from python_modules.question_helpers import generate_questions, select_a_category, display_score
+from question_helpers import generate_questions, select_a_category, display_score
 from python_modules.graphics_helpers import print_banner, print_game_over, print_title_card, print_round_number, \
     print_game_mode, print_winning_player, print_menu, print_leaderboard, print_final_score
 from python_modules.config import psych_up_comments, appearance_comments, agree_responses, easy_mode_comments, medium_mode_comments, \
@@ -64,9 +64,11 @@ def prompt_menu_options():
     time.sleep(1)
     print(WHITE + "3. Head-to-Head")
     time.sleep(1)
-    print(BRIGHT_CYAN +"4. View Leaderboard")
+    print(GREEN + "4. Lightening")
     time.sleep(1)
-    print(MAGENTA + "5. Exit Game\n"+ RESET)
+    print(BRIGHT_CYAN +"5. View Leaderboard")
+    time.sleep(1)
+    print(MAGENTA + "6. Exit Game\n"+ RESET)
     time.sleep(1)
 
     # Use the get integer function I defined in the validation errors module to get a valid integer input from 1 to 6
@@ -426,9 +428,52 @@ def run_head_to_head_mode():
     # see if the user wishes to play another game
     play_again()
 
+def run_lightning_round():
+
+    lightening_categories = [
+        {"name": "General Knowledge", "id": 9},
+        {"name": "Entertainment: Books", "id": 10},
+        {"name": "Entertainment: Film", "id": 11},
+        {"name": "Entertainment: Music", "id": 12},
+        {"name": "Entertainment: Television", "id": 10},
+        {"name": "Science & Nature", "id": 17},
+    ]
+
+    print_game_mode("Lightning")
+
+    print("\nWelcome to Lightning Round! With 60 seconds on the clock how many questions can you correctly answer?\n")
+
+    print("Please choose a "+ BRIGHT_CYAN + "category:"+RESET)
+    for index, value in enumerate (lightening_categories, start=0):
+        print(f"{index+1}. {value['name']}")
+
+    print("")
+
+    category_number = get_integer("",1, len(lightening_categories))
+    selected_category = lightening_categories[category_number-1]["id"]
+
+    question_data = generate_api_request_method_2(amount=50, category=selected_category, token=token)
+
+    print("")
+
+    final_score = generate_questions(question_data, game_mode="lightening")
+
+    # print the output of the total scores to the user
+    print_final_score(final_score)
+
+    # get the current time so that it can be added to the leaderboard
+    current_time = datetime.datetime.now()
+
+    # Use the save to leaderboard csv function to save the output to the leaderboard
+    save_to_leaderboard_csv(score=final_score, date_time=current_time, game_mode="Lightening")
+
+    # see if user wants to play again
+    play_again()
+
+
 def generate_leaderboard():
     # List to store game modes
-    game_modes = ['Knockout', 'Pot Luck']
+    game_modes = ['Knockout', 'Pot Luck', 'Lightening']
 
     # Print the tittle of mode and delay
     print_leaderboard()
@@ -523,6 +568,8 @@ def select_and_run_game_mode():
     elif game_choice == 3:
         run_head_to_head_mode()
     elif game_choice == 4:
+        run_lightning_round()
+    elif game_choice == 5:
         generate_leaderboard()
     else:
         print_game_over()

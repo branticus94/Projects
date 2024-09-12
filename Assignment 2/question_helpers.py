@@ -2,6 +2,7 @@
 import random
 import time
 import html
+from threading import Timer
 
 # Imports from other modules I have written
 from python_modules.api_helpers import get_categories_list
@@ -18,7 +19,9 @@ GREEN = '\033[92m'
 MAGENTA = '\033[95m'
 RESET = '\033[97m'
 
-def generate_questions(questions, game_mode, game_round=None):
+global time_remaining
+
+def generate_questions(questions, game_mode=None, game_round=None):
     # if a round is not specified we are in potluck mode therefore set question number to 0,
     # if in knockout mode multiply the round by 50 to get what question number we need to start on e.g. if the loop has
     # run once the round number would be one so question number is initialised at 50
@@ -33,6 +36,18 @@ def generate_questions(questions, game_mode, game_round=None):
     # create an empty list to store the question scores
     question_scores = []
 
+    def time_up():
+        global time_remaining
+        time_remaining = False
+        return
+
+    global time_remaining
+    time_remaining = True
+
+    if game_mode == 'lightening':
+        t = Timer(60, time_up)  # x is amount of time in seconds
+        t.start()
+
     # Iterate over the dictionary of questions to display the question and answer, get user input and check if correct
     for i in questions:
         # Decodes html characters and initialises the variables question, correct answer and incorrect answer
@@ -44,6 +59,10 @@ def generate_questions(questions, game_mode, game_round=None):
         # Initialises a list of total answers then shuffles the variables inside using the random library
         answers = incorrect_answers + [correct_answer]
         random.shuffle(answers)
+
+        if not time_remaining:
+            print(RED + "Time's up!" + RESET)
+            break
 
         # Increment and print the question number:
         question_number += 1
@@ -63,8 +82,12 @@ def generate_questions(questions, game_mode, game_round=None):
         else:
             print(MAGENTA + f"Question Number {question_number}: " + RESET + f"{question}")
 
-        time.sleep(0.5)
+        if game_mode != "lightening":
+            time.sleep(0.5)
 
+        if not time_remaining:
+            print(RED + "Times up! This will be your last question, good luck!" + RESET)
+            break
         # iterate over the answers list to display the answers to the user, if the answer is the correct answer
         # store this answer in the correct answer index variable
         j = 0
@@ -73,7 +96,8 @@ def generate_questions(questions, game_mode, game_round=None):
             print(html.unescape(f"{j+1}.  {answer}"))
             if answer == correct_answer:
                 correct_answer_index = j
-            time.sleep(1)
+            if game_mode != "lightening":
+                time.sleep(1)
             j += 1
         print("")
 
@@ -82,15 +106,16 @@ def generate_questions(questions, game_mode, game_round=None):
 
         # compare user guess to answer using validate answer question and give a score,
         # if the question score is 0 and in knockout mode break out of the loop
-        question_score = validate_answer(user_guess, correct_answer_index, answers)
-        
+        question_score = validate_answer(user_guess=user_guess, correct_answer_index=correct_answer_index, answers= answers, game_mode=game_mode)
+
         if question_score==0 and game_mode == 'knockout':
             break
 
         # Append the question score to the question scores list, this will be used to calculate the score for the round
         question_scores.append(question_score)
 
-        time.sleep(2)
+        if game_mode != "lightening":
+            time.sleep(2)
 
     # Generate the round score by using the sum function on the question scores list
     if game_mode == "head_to_head":
@@ -112,7 +137,7 @@ def get_user_guess(answers):
     # return the int of the user guess
     return user_guess
 
-def validate_answer(user_guess, correct_answer_index, answers):
+def validate_answer(user_guess, correct_answer_index, answers, game_mode=None):
     #  escape the html characters of the correct answer and store in variable called correct answer
     correct_answer = html.unescape(answers[correct_answer_index])
 
@@ -122,12 +147,14 @@ def validate_answer(user_guess, correct_answer_index, answers):
         print(
             GREEN + f"\n{random.choice(correct_celebrations)}" + RESET + f" {correct_answer.replace(".", "")} is the correct answer \n")
         question_score = 1
-        time.sleep(0.5)
+        if game_mode != "lightening":
+            time.sleep(0.5)
     # Otherwise print that the answer is incorrect and set the question score to 0
     else:
         print(
             RED + f"\n{random.choice(incorrect_letdowns)}" + RESET + f" {correct_answer.replace(".", "")} is the correct answer \n")
-        time.sleep(0.5)
+        if game_mode != "lightening":
+            time.sleep(0.5)
         question_score = 0
 
     # return the question score
