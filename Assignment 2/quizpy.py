@@ -65,7 +65,7 @@ def prompt_menu_options():
     time.sleep(1)
     print(WHITE + "3. Head-to-Head")
     time.sleep(1)
-    print(GREEN + "4. Lightening")
+    print(GREEN + "4. Lightning")
     time.sleep(1)
     print(BRIGHT_CYAN +"5. View Leaderboard")
     time.sleep(1)
@@ -431,7 +431,7 @@ def run_head_to_head_mode():
 
 def run_lightning_round():
 
-    lightening_categories = [
+    lightning_categories = [
         {"name": "General Knowledge", "id": 9},
         {"name": "Entertainment: Books", "id": 10},
         {"name": "Entertainment: Film", "id": 11},
@@ -445,19 +445,19 @@ def run_lightning_round():
     print("\nWelcome to Lightning Round! With 60 seconds on the clock how many questions can you correctly answer?\n")
 
     print("Please choose a "+ BRIGHT_CYAN + "category:"+RESET)
-    for index, value in enumerate (lightening_categories, start=0):
+    for index, value in enumerate (lightning_categories, start=0):
         print(f"{index+1}. {value['name']}")
 
     print("")
 
-    category_number = get_integer("",1, len(lightening_categories))
-    selected_category = lightening_categories[category_number-1]["id"]
+    category_number = get_integer("",1, len(lightning_categories))
+    selected_category = lightning_categories[category_number-1]["id"]
 
     question_data = generate_api_request_method_2(amount=50, category=selected_category, token=token)
 
     print("")
 
-    final_score = generate_questions(question_data, game_mode="lightening")
+    final_score = generate_questions(question_data, game_mode="lightning")
 
     # print the output of the total scores to the user
     print_final_score(final_score)
@@ -466,7 +466,7 @@ def run_lightning_round():
     current_time = datetime.datetime.now()
 
     # Use the save to leaderboard csv function to save the output to the leaderboard
-    save_to_leaderboard_csv(score=final_score, date_time=current_time, game_mode="Lightening")
+    save_to_leaderboard_csv(score=final_score, date_time=current_time, game_mode="Lightning")
 
     # see if user wants to play again
     play_again()
@@ -474,7 +474,7 @@ def run_lightning_round():
 
 def generate_leaderboard():
     # List to store game modes
-    game_modes = ['Knockout', 'Pot Luck', 'Lightening']
+    game_modes = ['Knockout', 'Pot Luck', 'Lightning']
 
     # Print the tittle of mode and delay
     print_leaderboard()

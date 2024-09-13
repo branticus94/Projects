@@ -44,7 +44,7 @@ def generate_questions(questions, game_mode=None, game_round=None):
     global time_remaining
     time_remaining = True
 
-    if game_mode == 'lightening':
+    if game_mode == 'lightning':
         t = Timer(60, time_up)  # x is amount of time in seconds
         t.start()
 
@@ -82,7 +82,7 @@ def generate_questions(questions, game_mode=None, game_round=None):
         else:
             print(MAGENTA + f"Question Number {question_number}: " + RESET + f"{question}")
 
-        if game_mode != "lightening":
+        if game_mode != "lightning":
             time.sleep(0.5)
 
         if not time_remaining:
@@ -96,7 +96,7 @@ def generate_questions(questions, game_mode=None, game_round=None):
             print(html.unescape(f"{j+1}.  {answer}"))
             if answer == correct_answer:
                 correct_answer_index = j
-            if game_mode != "lightening":
+            if game_mode != "lightning":
                 time.sleep(1)
             j += 1
         print("")
@@ -114,7 +114,7 @@ def generate_questions(questions, game_mode=None, game_round=None):
         # Append the question score to the question scores list, this will be used to calculate the score for the round
         question_scores.append(question_score)
 
-        if game_mode != "lightening":
+        if game_mode != "lightning":
             time.sleep(2)
 
     # Generate the round score by using the sum function on the question scores list
@@ -147,13 +147,13 @@ def validate_answer(user_guess, correct_answer_index, answers, game_mode=None):
         print(
             GREEN + f"\n{random.choice(correct_celebrations)}" + RESET + f" {correct_answer.replace(".", "")} is the correct answer \n")
         question_score = 1
-        if game_mode != "lightening":
+        if game_mode != "lightning":
             time.sleep(0.5)
     # Otherwise print that the answer is incorrect and set the question score to 0
     else:
         print(
             RED + f"\n{random.choice(incorrect_letdowns)}" + RESET + f" {correct_answer.replace(".", "")} is the correct answer \n")
-        if game_mode != "lightening":
+        if game_mode != "lightning":
             time.sleep(0.5)
         question_score = 0
 
