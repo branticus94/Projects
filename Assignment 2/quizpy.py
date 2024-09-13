@@ -13,6 +13,7 @@ from PIL import Image
 from tabulate import tabulate
 from dotenv import load_dotenv
 import requests as req
+from pathlib import Path
 
 # Imports from modules I have created within the project
 from python_modules.api_helpers import get_session_token, get_category_question_count, generate_api_request_url, get_api_data, generate_api_request_method_2
@@ -502,36 +503,40 @@ def generate_leaderboard():
     # Play a drum roll
     playsound("assets/drum_roll.wav")
 
-    # Read the csv into a pandas dataframe
-    leaderboard = pd.read_csv('leaderboard.csv')
+    try:
+        # Read the csv into a pandas dataframe
+        leaderboard = pd.read_csv('leaderboard.csv')
 
-    # Convert the date column to datetime format
-    leaderboard['datetime'] = pd.to_datetime(leaderboard['datetime'])
+        # Convert the date column to datetime format
+        leaderboard['datetime'] = pd.to_datetime(leaderboard['datetime'])
 
-    # Change the datetime format and add a new column, date_formatted
-    leaderboard['date_formatted'] = leaderboard['datetime'].dt.strftime('%Y/%m/%d')
+        # Change the datetime format and add a new column, date_formatted
+        leaderboard['date_formatted'] = leaderboard['datetime'].dt.strftime('%Y/%m/%d')
 
-    # Drop the datetime column from the dataframe
-    leaderboard_remove_datetime = leaderboard.drop(columns='datetime')
+        # Drop the datetime column from the dataframe
+        leaderboard_remove_datetime = leaderboard.drop(columns='datetime')
 
-    # filter the leaderboard by game mode
-    filtered_leaderboard = leaderboard_remove_datetime[leaderboard_remove_datetime['mode'] == game_mode]
+        # filter the leaderboard by game mode
+        filtered_leaderboard = leaderboard_remove_datetime[leaderboard_remove_datetime['mode'] == game_mode]
 
-    # Change datatype of score to int
-    filtered_leaderboard.loc[:, 'score'] = pd.to_numeric(filtered_leaderboard['score'])
+        # Change datatype of score to int
+        filtered_leaderboard.loc[:, 'score'] = pd.to_numeric(filtered_leaderboard['score'])
 
-    # sort the filtered leaderboard by descending score
-    sorted_filtered_leaderboard = filtered_leaderboard.sort_values(by='score', ascending=False,ignore_index=True)
+        # sort the filtered leaderboard by descending score
+        sorted_filtered_leaderboard = filtered_leaderboard.sort_values(by='score', ascending=False,ignore_index=True)
 
-    # Rename the columns from the csv
-    sorted_filtered_leaderboard_renamed = sorted_filtered_leaderboard.rename(columns = {'quiz_name': 'Quiz Team Name', 'score': 'Score', 'mode': 'Mode', 'date_formatted':'Date'})
+        # Rename the columns from the csv
+        sorted_filtered_leaderboard_renamed = sorted_filtered_leaderboard.rename(columns = {'quiz_name': 'Quiz Team Name', 'score': 'Score', 'mode': 'Mode', 'date_formatted':'Date'})
 
-    # Format for center alignment in tabulate
-    col_align = ["center", "center", "center", "center"]
+        # Format for center alignment in tabulate
+        col_align = ["center", "center", "center", "center"]
 
-    # use the tabulate function imported from the tabulate library, allowing me to format the dataframe in an
-    # aesthetically pleasing format and print output
-    print(tabulate(sorted_filtered_leaderboard_renamed, headers='keys', tablefmt='psql', showindex=False, colalign=col_align))
+        # use the tabulate function imported from the tabulate library, allowing me to format the dataframe in an
+        # aesthetically pleasing format and print output
+        print(tabulate(sorted_filtered_leaderboard_renamed, headers='keys', tablefmt='psql', showindex=False, colalign=col_align))
+
+    except FileNotFoundError:
+        print(RED + "Looks like the leaderboard is empty - get playing!" + RESET)
 
     # see if user wants to play again
     play_again()
@@ -540,7 +545,18 @@ def save_to_leaderboard_csv(score, date_time, game_mode):
     global quiz_team_name
 
     # create a variable file to store the path to the leaderboard file
-    file = 'leaderboard.csv'
+    file = Path('leaderboard.csv')
+
+    if not file.is_file():
+        with open(file, 'w', newline='') as csvfile:
+            # Create a csv.writer object
+            writer = csv.writer(csvfile)
+
+            # Define the header row
+            header = ['quiz_name', 'score', 'mode', 'datetime']
+
+            # Write the header row to the CSV file
+            writer.writerow(header)
 
     # Create a new row list which holds the quiz name, score, date_time and game mode for saving
     # (the arguments passed in with the function)
@@ -599,10 +615,10 @@ def play_again():
 token = get_session_token()['token']
 
 # play the entry music using the playsound function of the playsound library
-playsound("assets/trivia_game_entry.wav")
+# playsound("assets/trivia_game_entry.wav")
 
 # print the title card
-print_title_card()
+# print_title_card()
 
 # run the confirm play game function to ensure the user wishes to play otherwise - game over
 confirm_play_game()
