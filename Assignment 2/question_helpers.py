@@ -179,18 +179,24 @@ def print_all_categories():
         print(f"{i+1}. {category_names[i]}")
         time.sleep(0.25)
 
-def select_a_category():
+    return
+
+def select_a_category(mode=None, j=None):
     # create a list of all the categories
     all_categories = (get_categories_list()['trivia_categories'])
 
-    # Code to get a category, mode 10 lists all available categories in the API
-    print("First lets " + BRIGHT_CYAN + "select a category" + RESET + ":")
-    time.sleep(0.5)
+    if mode != "pub_quiz_generator":
+        # Code to get a category, mode 10 lists all available categories in the API
+        print("First lets " + BRIGHT_CYAN + "select a category" + RESET + ":")
+        time.sleep(0.5)
 
-    # Loop ove the list of preselected categories, printing them and delay until print next
+    # Loop over the list of preselected categories, printing them and delay until print next
     for i in range (len(pre_selected_categories)):
         print(f"{i+1}. {pre_selected_categories[i]}")
         time.sleep(0.25)
+
+    if mode == "pub_quiz_generator":
+        print("\nPlease select " + MAGENTA + f"category {j + 1}:" + RESET)
 
     time.sleep(2)
 
@@ -227,6 +233,9 @@ def select_a_category():
             if category['name'] == pre_selected_categories[selected_category - 1]:
                 category_id = category['id']
                 category_name = category['name']
+
+    if mode == "pub_quiz_generator":
+         print("\nYou selected" + BRIGHT_CYAN + f" {category_name}!\n" + RESET)
 
     # return the category id and name
     return category_id, category_name

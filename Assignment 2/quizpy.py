@@ -1,4 +1,5 @@
 # Built in imports
+import html
 import json
 import random
 import time
@@ -14,13 +15,15 @@ from tabulate import tabulate
 from dotenv import load_dotenv
 import requests as req
 from pathlib import Path
+from tkinter import filedialog
+import threading
 
 # Imports from modules I have created within the project
 from python_modules.api_helpers import get_session_token, get_category_question_count, generate_api_request_url, get_api_data, generate_api_request_method_2
 from python_modules.validation_helpers import get_integer, get_yes_no
 from question_helpers import generate_questions, select_a_category, display_score
-from python_modules.graphics_helpers import print_banner, print_game_over, print_title_card, print_round_number, \
-    print_game_mode, print_winning_player, print_menu, print_leaderboard, print_final_score
+from python_modules.graphics_helpers import print_game_mode, print_winning_player, print_menu, print_leaderboard, \
+    print_final_score, print_banner, print_game_over, print_round_number, print_title_card
 from python_modules.config import psych_up_comments, appearance_comments, agree_responses, easy_mode_comments, medium_mode_comments, \
     hard_mode_comments, all_difficulties_comments, leaderboard_comments
 
@@ -58,19 +61,21 @@ def confirm_play_game():
 def prompt_menu_options():
     # Print the menu
     print("Please select an " + BRIGHT_CYAN + "option" + RESET + " from the menu below:")
-    time.sleep(1)
+    time.sleep(0.5)
     print(RED + "1. Pot Luck")
-    time.sleep(1)
+    time.sleep(0.5)
     print(BRIGHT_YELLOW +"2. Knockout")
-    time.sleep(1)
+    time.sleep(0.5)
     print(WHITE + "3. Head-to-Head")
-    time.sleep(1)
+    time.sleep(0.5)
     print(GREEN + "4. Lightning")
-    time.sleep(1)
+    time.sleep(0.5)
     print(BRIGHT_CYAN +"5. View Leaderboard")
-    time.sleep(1)
-    print(MAGENTA + "6. Exit Game\n"+ RESET)
-    time.sleep(1)
+    time.sleep(0.5)
+    print(BRIGHT_YELLOW + "6. Quiz Generator")
+    time.sleep(0.5)
+    print(MAGENTA + "7. Exit Game\n"+ RESET)
+    time.sleep(0.5)
 
     # Use the get integer function I defined in the validation errors module to get a valid integer input from 1 to 6
     game_mode = get_integer("Enter your choice:\n", 1, 6)
@@ -93,6 +98,9 @@ def generate_quiz_name():
 
     # Set the base url of the api request which the parameters will be added to
     base_url = "https://superheroapi.com/api/"
+
+    print_game_mode("Quiz Team Name")
+    print_game_mode("Generator")
 
     # There are 731 superheros in the API therefore to generate the name I ask the user to select a number between
     # 1 and 731 using the get integer function I defined in the get integer module
@@ -412,7 +420,7 @@ def run_head_to_head_mode():
     # print final scores
     print("After a fierce battle, sweat, and maybe a little bit of luck, the final scores have been tallied. "
           "Drumroll please...\n")
-    playsound("assets/drum_roll.wav")
+    play_sound_non_blocking("assets/drum_roll.wav")
     print(MAGENTA + "Player 1: " + RESET + f"{player_1_score}")
     time.sleep(1)
     print(BRIGHT_CYAN + "Player 2: " + RESET + f"{player_2_score}")
@@ -567,6 +575,117 @@ def save_to_leaderboard_csv(score, date_time, game_mode):
         writer = csv.writer(csvfile)
         writer.writerow(new_row)
 
+def play_sound_non_blocking(audio_file):
+    threading.Thread(target=playsound, args=(audio_file,), daemon=True).start()
+
+def print_strings_non_blocking():
+    def print_strings():
+        strings = ['Generating quiz...', 'Not long to go now!...']
+        print(GREEN,end="")
+        for string in strings:
+            for char in string:
+                print(char, end="")
+                time.sleep(0.5)
+            time.sleep(1)
+            print("\n")
+        print(RESET, end="")
+
+    threading.Thread(target=print_strings, daemon=True).start()
+
+
+def generate_pub_quiz():
+    # Print name of mode
+    print_game_mode("QuizGenerator")
+    time.sleep(1)
+
+    # Print round information and instructions to the console
+    print("Welcome to the Quiz Generator! Select a folder and 5 round categories on your computer and we will create a quiz!")
+    time.sleep(2)
+
+    print("\nFirst lets " + BRIGHT_CYAN + "select a folder" + RESET + " to save your quiz to:")
+    time.sleep(2)
+
+    # Use the askdirectory method of the tkinter filedialog module to get the path where the uer wants to save their quiz
+    directory = filedialog.askdirectory()
+
+    # Create a filename
+    file_time = (datetime.datetime.now()).strftime("%d_%m_%y_%H:%M")
+    file_path = directory + "/pub_quiz_" + str(file_time)+".txt"
+
+    # Output instructions to user to select categories
+    print("\nFantastic! Now let's select your categories:")
+    time.sleep(2)
+
+    # create and empty list to store the selected categories id and name
+    selected_categories = []
+
+    # iterate in the range of 5 to select 5 categories, ensuring the user does not select the same category twice
+    for i in range(5):
+        category_id, category_name = select_a_category(mode="pub_quiz_generator", j=i)
+        selected_category = {'category_id': category_id, 'category_name': category_name}
+        while any(category['category_id']==category_id for category in selected_categories):
+            print(RED + "That category is already selected!" + RESET + " Please select another category.\n")
+            category_id, category_name = select_a_category(mode="pub_quiz_generator", j=i)
+            selected_category = {'category_id': category_id, 'category_name': category_name}
+
+        selected_categories.append(selected_category)
+
+    # assign path for countdown music
+    audio_file = 'assets/Countdown Clock 30 Seconds.mp3'
+
+    # Play sound in a non-blocking way
+    play_sound_non_blocking(audio_file)
+
+    # Print waiting strings in separate thread in a non-blocking way
+    print_strings_non_blocking()
+
+    time.sleep(5)
+
+    # Initialise empty list to store the data from the API request
+    pub_quiz_questions_and_answers = []
+
+    # Perform API request to get the questions and answers
+    for category in selected_categories:
+        results = generate_api_request_method_2(amount=10, category=category['category_id'], token=token)
+        pub_quiz_questions_and_answers.append(results)
+        time.sleep(5)
+
+    # open a text file to write results to
+    with open (file_path, 'w', newline="\n") as file:
+        file.write("Pub Quiz!\n")
+
+        file.write("\nQuestions:\n")
+
+        for i in range(5):
+            round_i = pub_quiz_questions_and_answers[i]
+            category = selected_categories[i]['category_name']
+            file.write(f"\nRound {i+1}: {category}\n")
+            for j in range(10):
+                questions = round_i[j]
+                remove_html_question = html.unescape(questions['question'])
+                if questions['type']=='boolean':
+                    t_or_f = 'True or False: '
+                else:
+                    t_or_f = ''
+                file.write(f"{j+1}. {t_or_f}{remove_html_question}\n")
+
+        file.write('\nAnswers:\n')
+        for i in range(5):
+            round_i = pub_quiz_questions_and_answers[i]
+            category = selected_categories[i]['category_name']
+            file.write(f"\nRound {i + 1}: {category}\n")
+            for j in range(10):
+                answers = round_i[j]
+                remove_html_answer = html.unescape(answers['correct_answer'])
+                file.write(f"{j + 1}. {remove_html_answer}\n")
+
+    print(f"All done! You can now open your pub quiz!")
+
+    time.sleep(1)
+
+    # see if user wants to play again
+    play_again()
+
 def select_and_run_game_mode():
     global quiz_team_name, token
     # print the menu logo
@@ -587,6 +706,8 @@ def select_and_run_game_mode():
         run_lightning_round()
     elif game_choice == 5:
         generate_leaderboard()
+    elif game_choice == 6:
+        generate_pub_quiz()
     else:
         print_game_over()
         playsound("assets/fail-muted-trumpet.wav")
@@ -615,10 +736,10 @@ def play_again():
 token = get_session_token()['token']
 
 # play the entry music using the playsound function of the playsound library
-# playsound("assets/trivia_game_entry.wav")
+play_sound_non_blocking("assets/trivia_game_entry.wav")
 
 # print the title card
-# print_title_card()
+print_title_card()
 
 # run the confirm play game function to ensure the user wishes to play otherwise - game over
 confirm_play_game()

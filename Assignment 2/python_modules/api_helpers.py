@@ -181,7 +181,7 @@ def generate_api_request_method_2(amount=None, category=None, difficulty=None, q
 # testing area for method 2 API request:
 # token =get_session_token()
 # token = token['token']
-# token = "cb5e427a4a464b9828adffd80b856b9a0dc01b12205dcfedac2eff8676336bb7"
+# token = "cb5e427a4a464b9828ad80b856b9a0dc01b12205ac2eff8676336bb7"
 # # api_parameters:
 # amount=31
 # category=10
