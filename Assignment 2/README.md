@@ -139,6 +139,10 @@ Knockout mode is an elimination-style game. Players compete to stay in the game 
 In this mode, two players or teams face off against each other in direct competition. They take turns answering questions, and the player or team with the most correct answers wins. There are 10 questions each of a random category/difficulty level.
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/5WPRwBpCk4A/0.jpg)](https://www.youtube.com/watch?v=5WPRwBpCk4A)
 
+### Lightning 
+In this mode, players have 60 seconds to answer as many questions they can from a limited list of categories.
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Ds7p49i1up0/0.jpg)](https://www.youtube.com/watch?v=Ds7p49i1up0)
+
 ### Leaderboard
 The leaderboard mode allows you to see the leaderboard for potluck or knockout mode. Before the scores are released a drum roll plays for added fun!
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Tpp4cp-qLy8/0.jpg)](https://www.youtube.com/watch?v=Tpp4cp-qLy8)
