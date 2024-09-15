@@ -125,32 +125,40 @@ As mentioned above, I created a requirements.txt file using: ```pip freeze > req
 
 ### Opening menu and generate quiz name
 The opening menu allows you to set up and start a trivia session. A quiz team name is generated, which helps identify your game in the leaderboard and adds a fun, personalized touch before the trivia begins.
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/2edApUOy0BI/0.jpg)](https://www.youtube.com/watch?v=2edApUOy0BI)
 
 ### Potluck
-In the Potluck mode, questions come from a random assortment of categories. There are 3 rounds of 10 questions. The difficulty increases with each round
+In the Potluck mode, questions come from a random assortment of categories. There are 3 rounds of 10 questions. The difficulty increases with each round.
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/yPhNEKsoONU/0.jpg)](https://www.youtube.com/watch?v=yPhNEKsoONU)
 
 ### Knockout
 Knockout mode is an elimination-style game. Players compete to stay in the game by answering correctly, and a wrong answer knocks them out of the competition.
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/S4fmLuaaWh0/0.jpg)](https://www.youtube.com/watch?v=S4fmLuaaWh0)
 
 ### Head to head
 In this mode, two players or teams face off against each other in direct competition. They take turns answering questions, and the player or team with the most correct answers wins. There are 10 questions each of a random category/difficulty level.
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/5WPRwBpCk4A/0.jpg)](https://www.youtube.com/watch?v=5WPRwBpCk4A)
 
 ### Lightning 
 In this mode, players have 60 seconds to answer as many questions they can from a limited list of categories.
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Ds7p49i1up0/0.jpg)](https://www.youtube.com/watch?v=Ds7p49i1up0)
 
 ### Leaderboard
 The leaderboard mode allows you to see the leaderboard for potluck or knockout mode. Before the scores are released a drum roll plays for added fun!
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Tpp4cp-qLy8/0.jpg)](https://www.youtube.com/watch?v=Tpp4cp-qLy8)
 
 ### Pub Quiz Generator
 The pub quiz generator prompts the user to select 5 unique categories and generates a text file quiz for use in home pub quiz games!
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/fzq7OM2ijS0/0.jpg)](https://www.youtube.com/watch?v=fzq7OM2ijS0)
 
 ### Exit
-At the end of the game a fun "Wamp Wamp Wamp Waaaaaaaamp" style sound plays and the application ends
+At the end of the game a fun "Wamp Wamp Wamp Waaaaaaaamp" style sound plays and the application ends.
+
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6GSYO1VsLVU/0.jpg)](https://www.youtube.com/watch?v=6GSYO1VsLVU)
