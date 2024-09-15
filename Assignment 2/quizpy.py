@@ -78,7 +78,7 @@ def prompt_menu_options():
     time.sleep(0.5)
 
     # Use the get integer function I defined in the validation errors module to get a valid integer input from 1 to 6
-    game_mode = get_integer("Enter your choice:\n", 1, 6)
+    game_mode = get_integer("Enter your choice:\n", 1, 7)
 
     # Print the banner
     time.sleep(2)
@@ -595,7 +595,8 @@ def print_strings_non_blocking():
 
 def generate_pub_quiz():
     # Print name of mode
-    print_game_mode("QuizGenerator")
+    print_game_mode("           Quiz")
+    print_game_mode("Generator")
     time.sleep(1)
 
     # Print round information and instructions to the console
@@ -608,12 +609,18 @@ def generate_pub_quiz():
     # Use the askdirectory method of the tkinter filedialog module to get the path where the uer wants to save their quiz
     directory = filedialog.askdirectory()
 
+    if directory == "":
+        print("\nOoooops looks like you didn't select a folder! Saving to Assignment 2/assets/quiz_generator\n")
+        directory = "assets/quiz_generator"
+        print("Now lets select your categories:")
+    else:
+        # Output instructions to user to select categories
+        print(f"\nFantastic, saving to {directory}!Now let's select your categories:")
+
     # Create a filename
-    file_time = (datetime.datetime.now()).strftime("%d_%m_%y_%H:%M")
+    file_time = (datetime.datetime.now()).strftime("%d_%m_%y_%H_%M")
     file_path = directory + "/pub_quiz_" + str(file_time)+".txt"
 
-    # Output instructions to user to select categories
-    print("\nFantastic! Now let's select your categories:")
     time.sleep(2)
 
     # create and empty list to store the selected categories id and name
@@ -629,6 +636,8 @@ def generate_pub_quiz():
             selected_category = {'category_id': category_id, 'category_name': category_name}
 
         selected_categories.append(selected_category)
+
+    time.sleep(1)
 
     # assign path for countdown music
     audio_file = 'assets/Countdown Clock 30 Seconds.mp3'
@@ -734,6 +743,8 @@ def play_again():
 
 # At the startup of the app get a session token using the get session token
 token = get_session_token()['token']
+
+generate_pub_quiz()
 
 # play the entry music using the playsound function of the playsound library
 play_sound_non_blocking("assets/trivia_game_entry.wav")

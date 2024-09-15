@@ -1,0 +1,125 @@
+Pub Quiz!
+
+Questions:
+
+Round 1: General Knowledge
+1. What is the official language of Brazil?
+2. True or False: Furby was released in 1998.
+3. True or False: Francis Bacon died from a fatal case of pneumonia while he was attempting to preserve meat by stuffing a chicken with snow.
+4. The word "abulia" means which of the following?
+5. Which country has the most Trappist breweries?
+6. What is the unit of currency in Laos?
+7. True or False: When you cry in space, your tears stick to your face.
+8. Which language is NOT Indo-European?
+9. Rolex is a company that specializes in what type of product?
+10. According to Fair Works Australia, how long do you have to work to get Long Service Leave?
+
+Round 2: Entertainment: Books
+1. What is the name of the three headed dog in Harry Potter and the Sorcerer's Stone?
+2. In the year 1818, novelist Mary Shelly is credited with writing a fiction novel and creating this infamous character.
+3. In "Little Women", which of the March sisters married Laurie?
+4. Which of these does Charlie NOT read in The Perks of Being a Wallflower?
+5. Who was the original author of Frankenstein?
+6. By what nickname is Jack Dawkins known in the Charles Dickens novel, 'Oliver Twist'?
+7. Who wrote "Harry Potter"?
+8. True or False: In Harry Potter and the Deathly Hallows, Hermione destroyed the fourth Horcrux by stabbing it with the Sword of Gryffindor.
+9. What is the name of the gang that Ponyboy is a part of in the book, The Outsiders?
+10. What is the name of the protagonist of J.D. Salinger's novel Catcher in the Rye?
+
+Round 3: Entertainment: Film
+1. In the 1999 movie Fight Club, which of these is not a rule of the "fight club"?
+2. What did Alfred Hitchcock use as blood in the film "Psycho"? 
+3. In the 1984 movie "The Terminator", what model number is the Terminator portrayed by Arnold Schwarzenegger?
+4. Which star actor was in "Top Gun", "Jerry Maguire" and "Born on the Fourth of July"?
+5. Who played the female lead in the 1933 film "King Kong"?
+6. The killer in the 1981 film 'My Bloody Valentine' wears what sort of outfit?
+7. What is the name of the queen's pet in A Bug's Life?
+8. True or False: Matt Damon played an astronaut stranded on an extraterrestrial planet in both of the movies Interstellar and The Martian.
+9. What is the correct phrase for the Latin saying "Romanes Eunt Domus" in Monty Python's Life of Brian?
+10. True or False: The movie "Tron" received an Oscar nomination for Best Visual Effects.
+
+Round 4: Entertainment: Music
+1. What is the stage name of New Zealand singer Phillipa "Pip" Brown?
+2. What song originally performed by The Bee Gees in 1978 had a cover version by Steps 20 years later?
+3. Which song in Drake's "Views" features Future?
+4. What's the most common time signature for rock songs?
+5. What was the title of Sakamoto Kyu's song "Ue o Muite Arukou" (I Look Up As I Walk) changed to in the United States?
+6. Chino Moreno is the lead singer of which alternative metal band?
+7. EDM record label Monstercat is based in which country?
+8. Who had a 1981 hit with the song "Japanese Boy"?
+9. Which band recorded the album "Parallel Lines"?
+10. What was the subject of the 2014 song "CoCo" by American rapper O. T. Genasis?
+
+Round 5: Science & Nature
+1. Who developed the first successful polio vaccine in the 1950s?
+2. The human right lung has how many lobes?
+3. In Psychology, which need appears highest in the "Maslow's hierarchy of needs" pyramid?
+4. A positron is an antiparticle of a what?
+5. How many officially recognized dwarf planets in the solar system are named after Polynesian deities?
+6. The humerus, paired radius, and ulna come together to form what joint?
+7. Which of these is a stop codon in DNA?
+8. Along with Oxygen, which element is primarily responsible for the sky appearing blue?
+9. What is the official name of the star located closest to the North Celestial Pole?
+10. Which of the following spacecraft never touched the moon?
+
+Answers:
+
+Round 1: General Knowledge
+1. Portugese
+2. True
+3. True
+4. The inability to make decisions
+5. Belgium
+6. Kip
+7. True
+8. Hungarian
+9. Watches
+10. 7 years
+
+Round 2: Entertainment: Books
+1. Fluffy
+2. Frankenstein's monster
+3. Amy
+4. The Grapes of Wrath
+5. Mary Shelley
+6. The Artful Dodger
+7. J.K. Rowling
+8. False
+9. The Greasers
+10. Holden Caulfield
+
+Round 3: Entertainment: Film
+1. Always wear a shirt
+2. Chocolate syrup
+3. T-800
+4. Tom Cruise
+5. Fay Wray
+6. Mining gear
+7. Aphie
+8. True
+9. Romani Ite Domum
+10. False
+
+Round 4: Entertainment: Music
+1. Ladyhawke
+2. Tragedy
+3. Grammys
+4. 4/4
+5. Sukiyaki
+6. Deftones
+7. Canada
+8. Aneka
+9. Blondie
+10. Cocaine
+
+Round 5: Science & Nature
+1. Jonas Salk
+2. 3
+3. Esteem
+4. Electron
+5. 2
+6. Elbow
+7. TAA
+8. Nitrogen
+9. Polaris
+10. Mariner 4
