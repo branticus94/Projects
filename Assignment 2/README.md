@@ -147,6 +147,10 @@ In this mode, players have 60 seconds to answer as many questions they can from 
 The leaderboard mode allows you to see the leaderboard for potluck or knockout mode. Before the scores are released a drum roll plays for added fun!
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/Tpp4cp-qLy8/0.jpg)](https://www.youtube.com/watch?v=Tpp4cp-qLy8)
 
+### Pub Quiz Generator
+The pub quiz generator prompts the user to select 5 unique categories and generates a text file quiz for use in home pub quiz games!
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/fzq7OM2ijS0/0.jpg)](https://www.youtube.com/watch?v=fzq7OM2ijS0)
+
 ### Exit
 At the end of the game a fun "Wamp Wamp Wamp Waaaaaaaamp" style sound plays and the application ends
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6GSYO1VsLVU/0.jpg)](https://www.youtube.com/watch?v=6GSYO1VsLVU)

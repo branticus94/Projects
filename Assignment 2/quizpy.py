@@ -99,7 +99,8 @@ def generate_quiz_name():
     # Set the base url of the api request which the parameters will be added to
     base_url = "https://superheroapi.com/api/"
 
-    print_game_mode("Quiz Team Name")
+    print_game_mode("Quiz Team")
+    print_game_mode("        Name")
     print_game_mode("Generator")
 
     # There are 731 superheros in the API therefore to generate the name I ask the user to select a number between
@@ -743,8 +744,6 @@ def play_again():
 
 # At the startup of the app get a session token using the get session token
 token = get_session_token()['token']
-
-generate_pub_quiz()
 
 # play the entry music using the playsound function of the playsound library
 play_sound_non_blocking("assets/trivia_game_entry.wav")
