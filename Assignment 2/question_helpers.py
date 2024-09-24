@@ -97,7 +97,7 @@ def generate_questions(questions, game_mode=None, game_round=None):
             if answer == correct_answer:
                 correct_answer_index = j
             if game_mode != "lightning":
-                time.sleep(1)
+                time.sleep(0.25)
             j += 1
         print("")
 
