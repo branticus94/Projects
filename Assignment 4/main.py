@@ -8,9 +8,6 @@ import pyfiglet
 import time
 import re
 
-from libraries_api_server import get_libraries
-
-
 def check_server_running():
     try:
         get_index()['message']
