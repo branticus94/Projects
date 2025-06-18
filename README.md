@@ -25,7 +25,7 @@ Proud mom to a beautiful 4 month old boy named Charlie[^1]
     
   <summary>👶🍼 Peekaboo!</summary>
   
-  ![Picture of my adorable baby](Photos/CharlieCanoeing.jpg)
+  ![Picture of my adorable baby](Assignment_1/Photos/CharlieCanoeing.jpg)
     
   </details>
 
